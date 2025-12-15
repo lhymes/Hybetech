@@ -12,3 +12,4 @@ export { default as AnimatedHero } from './AnimatedHero';
 export { default as FloatingElements } from './FloatingElements';
 export { default as AnimatedText } from './AnimatedText';
 export { default as ParallaxImage } from './ParallaxImage';
+export { default as ShineText } from './ShineText';
