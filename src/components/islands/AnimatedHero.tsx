@@ -77,35 +77,45 @@ export default function AnimatedHero({
         {highlightedText && (
           <>
             {' '}
-            {enableShine ? (
-              highlightedText.split('').map((char, index) => (
-                <motion.span
-                  key={index}
-                  className="text-gradient"
-                  style={{
-                    display: 'inline',
-                  }}
-                  animate={{
-                    filter: [
-                      'drop-shadow(0 0 0px rgba(59, 130, 246, 0))',
-                      'drop-shadow(0 0 20px rgba(59, 130, 246, 0.8)) drop-shadow(0 0 40px rgba(139, 92, 246, 0.5))',
-                      'drop-shadow(0 0 0px rgba(59, 130, 246, 0))',
-                    ],
-                  }}
-                  transition={{
-                    duration: 0.6,
-                    ease: 'easeOut',
-                    repeat: Infinity,
-                    repeatDelay: 6,
-                    delay: 2 + index * 0.03,
-                  }}
-                >
-                  {char === ' ' ? '\u00A0' : char}
-                </motion.span>
-              ))
-            ) : (
-              <span className="text-gradient">{highlightedText}</span>
-            )}
+            <span
+              className="text-gradient"
+              style={{
+                // This creates a gradient that spans all letters
+                backgroundSize: '100%',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+              }}
+            >
+              {enableShine ? (
+                highlightedText.split('').map((char, index) => (
+                  <motion.span
+                    key={index}
+                    style={{
+                      display: 'inline',
+                      color: 'inherit',
+                    }}
+                    animate={{
+                      textShadow: [
+                        '0 0 0px rgba(59, 130, 246, 0)',
+                        '0 0 12px rgba(59, 130, 246, 0.9), 0 0 25px rgba(139, 92, 246, 0.6), 0 0 40px rgba(59, 130, 246, 0.4)',
+                        '0 0 0px rgba(59, 130, 246, 0)',
+                      ],
+                    }}
+                    transition={{
+                      duration: 0.5,
+                      ease: 'easeOut',
+                      repeat: Infinity,
+                      repeatDelay: 12,
+                      delay: 3 + index * 0.025,
+                    }}
+                  >
+                    {char === ' ' ? '\u00A0' : char}
+                  </motion.span>
+                ))
+              ) : (
+                highlightedText
+              )}
+            </span>
           </>
         )}
       </motion.h1>
