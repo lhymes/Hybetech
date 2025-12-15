@@ -1,0 +1,270 @@
+---
+/**
+ * AI Implementation Service Page
+ */
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { CTA } from '@/lib/constants';
+import { IMAGES } from '@/lib/images';
+import AnimatedSection from '@/components/islands/AnimatedSection';
+import AnimatedCard from '@/components/islands/AnimatedCard';
+import FloatingElements from '@/components/islands/FloatingElements';
+
+const capabilities = [
+  {
+    title: 'System Integration',
+    description: 'Seamlessly connect AI tools with your existing software, databases, and workflows.',
+    icon: '🔗',
+  },
+  {
+    title: 'Workflow Automation',
+    description: 'Automate repetitive tasks and processes with intelligent AI-powered workflows.',
+    icon: '⚡',
+  },
+  {
+    title: 'Data Pipeline Setup',
+    description: 'Build robust data pipelines that feed your AI systems with clean, structured data.',
+    icon: '📊',
+  },
+  {
+    title: 'Performance Optimization',
+    description: 'Fine-tune AI models and systems for maximum speed and accuracy in your environment.',
+    icon: '🎯',
+  },
+];
+
+const processSteps = [
+  {
+    phase: 'Plan',
+    title: 'Architecture Design',
+    description: 'We map out how AI will integrate with your existing systems and create a detailed implementation plan.',
+  },
+  {
+    phase: 'Build',
+    title: 'Development & Integration',
+    description: 'Our team builds the connections, pipelines, and interfaces needed to deploy AI in your environment.',
+  },
+  {
+    phase: 'Test',
+    title: 'Quality Assurance',
+    description: 'Rigorous testing ensures everything works correctly before going live.',
+  },
+  {
+    phase: 'Launch',
+    title: 'Deployment & Training',
+    description: 'We deploy the solution, train your team, and provide documentation for ongoing success.',
+  },
+];
+---
+
+<BaseLayout
+  title="AI Implementation"
+  description="Deploy AI solutions seamlessly into your existing workflows and systems. Expert integration that minimizes disruption and maximizes results."
+>
+  <!-- Hero -->
+  <section class="relative section bg-primary-900 overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img
+        src={IMAGES.services.implementation}
+        alt=""
+        class="w-full h-full object-cover opacity-10"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-primary-900 via-primary-900/95 to-primary-900/80"></div>
+    </div>
+
+    <FloatingElements client:load variant="minimal" />
+
+    <div class="container-wide relative z-10">
+      <AnimatedSection client:visible>
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-500/10 border border-accent-500/20 mb-6">
+            <span class="text-xl">🚀</span>
+            <span class="text-sm font-medium text-accent-400">AI Implementation</span>
+          </div>
+          <h1 class="text-h1 font-heading font-bold text-primary-100">
+            From Strategy to Reality
+          </h1>
+          <p class="mt-6 text-body-lg text-primary-300">
+            You've identified the opportunity. Now let us deploy AI solutions that actually work in your environment. Seamless integration, minimal disruption, maximum impact.
+          </p>
+          <div class="flex flex-wrap gap-4 mt-8">
+            <a href={CTA.primary.href} class="btn-primary group">
+              Start Implementation
+              <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+            <a href="/services/consultation" class="btn-secondary">
+              Need Strategy First?
+            </a>
+          </div>
+        </div>
+      </AnimatedSection>
+    </div>
+  </section>
+
+  <!-- Capabilities -->
+  <section class="section bg-primary-950">
+    <div class="container-wide">
+      <AnimatedSection client:visible className="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-h2 font-heading font-bold text-primary-100">
+          What We Implement
+        </h2>
+        <p class="mt-4 text-lg text-primary-400">
+          From simple integrations to complex multi-system deployments, we handle the technical complexity so you can focus on results.
+        </p>
+      </AnimatedSection>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {capabilities.map((capability, index) => (
+          <AnimatedCard client:visible index={index}>
+            <div class="flex items-start gap-6">
+              <div class="w-16 h-16 rounded-xl bg-accent-500/10 flex items-center justify-center flex-shrink-0">
+                <span class="text-3xl">{capability.icon}</span>
+              </div>
+              <div>
+                <h3 class="font-heading text-xl font-semibold text-primary-100">
+                  {capability.title}
+                </h3>
+                <p class="mt-2 text-primary-400">
+                  {capability.description}
+                </p>
+              </div>
+            </div>
+          </AnimatedCard>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="section bg-primary-900">
+    <div class="container-wide">
+      <AnimatedSection client:visible className="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-h2 font-heading font-bold text-primary-100">
+          Our Implementation Process
+        </h2>
+        <p class="mt-4 text-lg text-primary-400">
+          A proven methodology that ensures successful deployment every time.
+        </p>
+      </AnimatedSection>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {processSteps.map((step, index) => (
+          <AnimatedCard client:visible index={index}>
+            <div class="text-center">
+              <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent-500 text-white font-bold mb-4">
+                {index + 1}
+              </div>
+              <div class="text-sm font-medium text-accent-400 mb-2">{step.phase}</div>
+              <h3 class="font-heading text-lg font-semibold text-primary-100">
+                {step.title}
+              </h3>
+              <p class="mt-2 text-sm text-primary-400">
+                {step.description}
+              </p>
+            </div>
+          </AnimatedCard>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Common Integrations -->
+  <section class="section bg-primary-950">
+    <div class="container-wide">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <AnimatedSection client:visible direction="left">
+          <h2 class="text-h2 font-heading font-bold text-primary-100">
+            We Work With Your Stack
+          </h2>
+          <p class="mt-4 text-lg text-primary-400">
+            Whether you're using modern cloud tools or legacy systems, we have experience integrating AI across a wide range of platforms.
+          </p>
+          <div class="mt-8 grid grid-cols-2 gap-4">
+            <div class="glass rounded-lg p-4 text-center">
+              <p class="font-medium text-primary-200">CRM Systems</p>
+              <p class="text-sm text-primary-500">Salesforce, HubSpot, etc.</p>
+            </div>
+            <div class="glass rounded-lg p-4 text-center">
+              <p class="font-medium text-primary-200">Cloud Platforms</p>
+              <p class="text-sm text-primary-500">AWS, Azure, GCP</p>
+            </div>
+            <div class="glass rounded-lg p-4 text-center">
+              <p class="font-medium text-primary-200">Databases</p>
+              <p class="text-sm text-primary-500">SQL, NoSQL, Vector DBs</p>
+            </div>
+            <div class="glass rounded-lg p-4 text-center">
+              <p class="font-medium text-primary-200">APIs & Services</p>
+              <p class="text-sm text-primary-500">REST, GraphQL, Webhooks</p>
+            </div>
+          </div>
+        </AnimatedSection>
+        <AnimatedSection client:visible direction="right" delay={0.2}>
+          <div class="glass rounded-2xl p-8">
+          <h3 class="font-heading text-xl font-semibold text-primary-100 mb-6">
+            Implementation Includes
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-primary-300">Full technical documentation</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-primary-300">Team training and onboarding</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-primary-300">30-day post-launch support</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-primary-300">Monitoring and alerting setup</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-primary-300">Performance optimization</span>
+            </li>
+          </ul>
+          </div>
+        </AnimatedSection>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section bg-primary-900 relative overflow-hidden">
+    <div class="absolute inset-0 bg-mesh opacity-50"></div>
+    <FloatingElements client:visible variant="minimal" />
+
+    <div class="container-wide relative z-10">
+      <AnimatedSection client:visible className="text-center max-w-3xl mx-auto">
+        <h2 class="text-h2 font-heading font-bold text-primary-100">
+          Ready to Deploy AI?
+        </h2>
+        <p class="mt-4 text-lg text-primary-400">
+          Let's discuss your implementation needs and create a plan for success.
+        </p>
+        <a href={CTA.primary.href} class="btn-primary mt-8 group">
+          {CTA.primary.label}
+          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </AnimatedSection>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,196 @@
+---
+/**
+ * Contact Page
+ *
+ * Features:
+ * - Contact form (Formspree)
+ * - Calendly integration placeholder
+ * - Direct contact info
+ */
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { SITE } from '@/lib/constants';
+import AnimatedSection from '@/components/islands/AnimatedSection';
+import FloatingElements from '@/components/islands/FloatingElements';
+---
+
+<BaseLayout
+  title="Contact Us"
+  description="Get in touch with Hybetech. Book a free AI assessment or send us a message. We typically respond within 24 hours."
+>
+  <!-- Hero -->
+  <section class="relative section-sm bg-primary-900 overflow-hidden">
+    <FloatingElements client:load variant="minimal" />
+
+    <div class="container-wide relative z-10">
+      <AnimatedSection client:visible>
+        <div class="max-w-3xl">
+          <span class="badge mb-4">Get in Touch</span>
+          <h1 class="text-h1 font-heading font-bold text-primary-100">
+            Let's Talk
+          </h1>
+          <p class="mt-4 text-body-lg text-primary-300">
+            Ready to explore how AI can transform your business? Book a free assessment or send us a message.
+          </p>
+        </div>
+      </AnimatedSection>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="section bg-primary-950">
+    <div class="container-wide">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- Form -->
+        <AnimatedSection client:visible direction="left">
+          <h2 class="text-h3 font-heading font-semibold text-primary-100 mb-6">
+            Send Us a Message
+          </h2>
+
+          <form
+            action="https://formspree.io/f/YOUR_FORM_ID"
+            method="POST"
+            class="space-y-6"
+          >
+            <div>
+              <label for="name" class="block text-sm font-medium text-primary-300 mb-2">
+                Name <span class="text-error-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="w-full px-4 py-3 bg-primary-800 border border-primary-700 rounded-lg text-primary-100 placeholder:text-primary-500 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent"
+                placeholder="Your name"
+              />
+            </div>
+
+            <div>
+              <label for="email" class="block text-sm font-medium text-primary-300 mb-2">
+                Email <span class="text-error-500">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full px-4 py-3 bg-primary-800 border border-primary-700 rounded-lg text-primary-100 placeholder:text-primary-500 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent"
+                placeholder="you@company.com"
+              />
+            </div>
+
+            <div>
+              <label for="company" class="block text-sm font-medium text-primary-300 mb-2">
+                Company
+              </label>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                class="w-full px-4 py-3 bg-primary-800 border border-primary-700 rounded-lg text-primary-100 placeholder:text-primary-500 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent"
+                placeholder="Your company"
+              />
+            </div>
+
+            <div>
+              <label for="interest" class="block text-sm font-medium text-primary-300 mb-2">
+                What are you interested in?
+              </label>
+              <select
+                id="interest"
+                name="interest"
+                class="w-full px-4 py-3 bg-primary-800 border border-primary-700 rounded-lg text-primary-100 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent"
+              >
+                <option value="">Select an option</option>
+                <option value="consultation">AI Consultation</option>
+                <option value="training">AI Training</option>
+                <option value="implementation">AI Implementation</option>
+                <option value="development">Custom AI Development</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="message" class="block text-sm font-medium text-primary-300 mb-2">
+                Message <span class="text-error-500">*</span>
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+                class="w-full px-4 py-3 bg-primary-800 border border-primary-700 rounded-lg text-primary-100 placeholder:text-primary-500 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent resize-none"
+                placeholder="Tell us about your project or question..."
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary w-full justify-center group">
+              Send Message
+              <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
+          </form>
+        </AnimatedSection>
+
+        <!-- Contact Info -->
+        <AnimatedSection client:visible direction="right" delay={0.2}>
+          <h2 class="text-h3 font-heading font-semibold text-primary-100 mb-6">
+            Other Ways to Reach Us
+          </h2>
+
+          <div class="space-y-6">
+            <!-- Email -->
+            <div class="card">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-accent-500/10 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-primary-100">Email</h3>
+                  <a href={`mailto:${SITE.email}`} class="text-accent-400 hover:text-accent-300">
+                    {SITE.email}
+                  </a>
+                  <p class="text-sm text-primary-500 mt-1">We typically respond within 24 hours.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Book a Call -->
+            <div class="card">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-accent-500/10 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-primary-100">Book a Call</h3>
+                  <p class="text-primary-400">
+                    Schedule a 15-minute intro call to discuss your needs.
+                  </p>
+                  <a href="#" class="inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 mt-2 text-sm font-medium">
+                    Book a time
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Response Time -->
+            <div class="glass rounded-xl p-6">
+              <p class="text-sm text-primary-400">
+                <span class="text-accent-400 font-semibold">Response Time:</span> We pride ourselves on fast communication. Expect a response within 24 hours on business days.
+              </p>
+            </div>
+          </div>
+        </AnimatedSection>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

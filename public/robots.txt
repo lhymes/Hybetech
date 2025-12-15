@@ -1,0 +1,12 @@
+# Robots.txt for Hybetech
+# https://www.hybe.tech/robots.txt
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.hybe.tech/sitemap-index.xml
+
+# Block admin/draft paths (if any)
+Disallow: /draft/
+Disallow: /api/

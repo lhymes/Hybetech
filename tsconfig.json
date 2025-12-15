@@ -1,0 +1,58 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    // Target modern browsers
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+
+    // Strict type checking
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+
+    // Path aliases for cleaner imports
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@components/*": ["src/components/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@styles/*": ["src/styles/*"],
+      "@content/*": ["src/content/*"],
+      "@lib/*": ["src/lib/*"],
+      "@assets/*": ["src/assets/*"],
+      "@design-tokens/*": ["design-tokens/*"]
+    },
+
+    // JSX for React components
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+
+    // Allow importing from .astro files
+    "allowImportingTsExtensions": true,
+
+    // Interop settings
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+
+    // Output settings (Astro handles this)
+    "noEmit": true,
+
+    // Skip type checking of declaration files in node_modules
+    "skipLibCheck": true
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.astro",
+    "design-tokens/**/*.ts"
+  ],
+  "exclude": ["node_modules", "dist"]
+}

@@ -1,0 +1,80 @@
+---
+/**
+ * Blog Index Page
+ */
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+// Get all non-draft blog posts, sorted by date
+const posts = (await getCollection('blog'))
+  .filter((post: CollectionEntry<'blog'>) => !post.data.draft)
+  .sort((a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout
+  title="Insights"
+  description="AI insights, tips, and thought leadership from the Hybetech team. Learn how to make AI work for your business."
+>
+  <!-- Hero -->
+  <section class="section-sm bg-primary-900">
+    <div class="container-wide">
+      <div class="max-w-3xl">
+        <h1 class="text-h1 font-heading font-bold text-primary-100">
+          Insights
+        </h1>
+        <p class="mt-4 text-body-lg text-primary-300">
+          Practical AI insights and thought leadership for growing businesses.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Posts -->
+  <section class="section bg-primary-950">
+    <div class="container-wide">
+      {posts.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {posts.map((post: CollectionEntry<'blog'>) => (
+            <a href={`/blog/${post.slug}`} class="card card-hover group">
+              {post.data.image && (
+                <img
+                  src={post.data.image}
+                  alt={post.data.imageAlt || ''}
+                  class="w-full h-48 object-cover rounded-lg mb-4"
+                />
+              )}
+              <div class="flex items-center gap-2 text-xs text-primary-500 mb-2">
+                <time datetime={post.data.pubDate.toISOString()}>
+                  {post.data.pubDate.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </time>
+                {post.data.tags.length > 0 && (
+                  <>
+                    <span>·</span>
+                    <span>{post.data.tags[0]}</span>
+                  </>
+                )}
+              </div>
+              <h2 class="font-heading text-lg font-semibold text-primary-100 group-hover:text-accent-400 transition-colors">
+                {post.data.title}
+              </h2>
+              <p class="mt-2 text-sm text-primary-400 line-clamp-3">
+                {post.data.description}
+              </p>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-12">
+          <p class="text-lg text-primary-400">
+            No posts yet. Check back soon for insights on making AI work for your business.
+          </p>
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>

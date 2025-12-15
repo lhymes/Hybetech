@@ -1,0 +1,8 @@
+# Cloudflare Pages Redirects
+# https://developers.cloudflare.com/pages/platform/redirects/
+
+# Redirect www to non-www (or vice versa - adjust as needed)
+# https://www.hybe.tech/* https://hybe.tech/:splat 301
+
+# Legacy URL redirects (add as needed)
+# /old-page /new-page 301

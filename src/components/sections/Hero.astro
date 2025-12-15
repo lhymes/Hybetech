@@ -1,0 +1,110 @@
+---
+/**
+ * Hero Section Component
+ *
+ * Flexible hero section with optional badge, image, and trust bar.
+ */
+
+interface Props {
+  badge?: string;
+  title: string;
+  highlightedText?: string;
+  description: string;
+  primaryCTA?: {
+    label: string;
+    href: string;
+  };
+  secondaryCTA?: {
+    label: string;
+    href: string;
+  };
+  showTrustBar?: boolean;
+  centered?: boolean;
+  minHeight?: 'sm' | 'md' | 'lg' | 'full';
+}
+
+const {
+  badge,
+  title,
+  highlightedText,
+  description,
+  primaryCTA,
+  secondaryCTA,
+  showTrustBar = false,
+  centered = false,
+  minHeight = 'lg',
+} = Astro.props;
+
+const heights = {
+  sm: 'min-h-[50vh]',
+  md: 'min-h-[65vh]',
+  lg: 'min-h-[85vh]',
+  full: 'min-h-screen',
+};
+---
+
+<section class={`relative ${heights[minHeight]} flex items-center overflow-hidden`}>
+  <!-- Background -->
+  <div class="absolute inset-0 bg-gradient-to-b from-primary-900 via-primary-900 to-primary-950"></div>
+  <div class="absolute inset-0 bg-mesh"></div>
+
+  <div class="container-wide relative z-10 py-20">
+    <div class={`${centered ? 'text-center mx-auto' : ''} max-w-4xl`}>
+      <!-- Badge -->
+      {badge && (
+        <div class={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-500/10 border border-accent-500/20 mb-8 ${centered ? '' : ''}`}>
+          <span class="w-2 h-2 rounded-full bg-accent-400 animate-pulse"></span>
+          <span class="text-sm font-medium text-accent-400">{badge}</span>
+        </div>
+      )}
+
+      <!-- Title -->
+      <h1 class="text-display font-heading font-bold text-primary-100 leading-tight text-balance">
+        {title}
+        {highlightedText && (
+          <span class="text-gradient"> {highlightedText}</span>
+        )}
+      </h1>
+
+      <!-- Description -->
+      <p class={`mt-6 text-body-lg text-primary-300 ${centered ? 'mx-auto' : ''} max-w-2xl`}>
+        {description}
+      </p>
+
+      <!-- CTAs -->
+      {(primaryCTA || secondaryCTA) && (
+        <div class={`flex flex-wrap gap-4 mt-10 ${centered ? 'justify-center' : ''}`}>
+          {primaryCTA && (
+            <a href={primaryCTA.href} class="btn-primary text-base px-8 py-4">
+              {primaryCTA.label}
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          )}
+          {secondaryCTA && (
+            <a href={secondaryCTA.href} class="btn-secondary text-base px-8 py-4">
+              {secondaryCTA.label}
+            </a>
+          )}
+        </div>
+      )}
+
+      <!-- Trust Bar -->
+      {showTrustBar && (
+        <div class="mt-16">
+          <p class="text-sm text-primary-500 mb-4">Trusted by forward-thinking companies</p>
+          <div class="flex flex-wrap items-center gap-8 opacity-60">
+            <div class="h-8 w-24 bg-primary-700 rounded animate-pulse"></div>
+            <div class="h-8 w-28 bg-primary-700 rounded animate-pulse"></div>
+            <div class="h-8 w-20 bg-primary-700 rounded animate-pulse"></div>
+            <div class="h-8 w-32 bg-primary-700 rounded animate-pulse"></div>
+          </div>
+        </div>
+      )}
+
+      <!-- Additional Content Slot -->
+      <slot />
+    </div>
+  </div>
+</section>

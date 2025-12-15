@@ -1,0 +1,96 @@
+---
+/**
+ * Feature Grid Section
+ *
+ * Displays a grid of features with icons, titles, and descriptions.
+ */
+
+interface Feature {
+  icon: string;
+  title: string;
+  description: string;
+  href?: string;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  features: Feature[];
+  columns?: 2 | 3 | 4;
+  background?: 'dark' | 'darker';
+}
+
+const {
+  title,
+  subtitle,
+  features,
+  columns = 4,
+  background = 'darker',
+} = Astro.props;
+
+const columnClasses = {
+  2: 'md:grid-cols-2',
+  3: 'md:grid-cols-2 lg:grid-cols-3',
+  4: 'md:grid-cols-2 lg:grid-cols-4',
+};
+
+const backgrounds = {
+  dark: 'bg-primary-900',
+  darker: 'bg-primary-950',
+};
+---
+
+<section class={`section ${backgrounds[background]}`}>
+  <div class="container-wide">
+    {(title || subtitle) && (
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        {title && (
+          <h2 class="text-h2 font-heading font-bold text-primary-100">
+            {title}
+          </h2>
+        )}
+        {subtitle && (
+          <p class="mt-4 text-lg text-primary-400">
+            {subtitle}
+          </p>
+        )}
+      </div>
+    )}
+
+    <div class={`grid grid-cols-1 ${columnClasses[columns]} gap-6`}>
+      {features.map((feature) => {
+        const CardContent = () => (
+          <>
+            <div class="w-12 h-12 rounded-xl bg-accent-500/10 flex items-center justify-center mb-4 group-hover:bg-accent-500/20 transition-colors">
+              <span class="text-2xl">{feature.icon}</span>
+            </div>
+            <h3 class="font-heading text-lg font-semibold text-primary-100 group-hover:text-accent-400 transition-colors">
+              {feature.title}
+            </h3>
+            <p class="mt-2 text-sm text-primary-400">
+              {feature.description}
+            </p>
+            {feature.href && (
+              <div class="mt-4 flex items-center gap-1 text-sm font-medium text-accent-400 group-hover:gap-2 transition-all">
+                Learn more
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </div>
+            )}
+          </>
+        );
+
+        return feature.href ? (
+          <a href={feature.href} class="card card-hover group">
+            <CardContent />
+          </a>
+        ) : (
+          <div class="card group">
+            <CardContent />
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

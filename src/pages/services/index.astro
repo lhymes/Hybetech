@@ -1,0 +1,90 @@
+---
+/**
+ * Services Overview Page
+ */
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { SERVICES, CTA } from '@/lib/constants';
+---
+
+<BaseLayout
+  title="Our Services"
+  description="From AI consultation to custom development, Hybetech offers comprehensive AI services tailored for growing businesses."
+>
+  <!-- Hero -->
+  <section class="section bg-primary-900">
+    <div class="container-wide">
+      <div class="max-w-3xl">
+        <h1 class="text-h1 font-heading font-bold text-primary-100">
+          Our Services
+        </h1>
+        <p class="mt-6 text-body-lg text-primary-300">
+          We guide you through every step of your AI journey - from strategy and training to implementation and custom development.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="section bg-primary-950">
+    <div class="container-wide">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {SERVICES.map((service, index) => (
+          <a href={service.href} class="card card-hover group p-8">
+            <div class="flex items-start gap-6">
+              <div class="w-16 h-16 rounded-xl bg-accent-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-accent-500/20 transition-colors">
+                <span class="text-3xl">
+                  {index === 0 && '🧠'}
+                  {index === 1 && '🎓'}
+                  {index === 2 && '🚀'}
+                  {index === 3 && '💻'}
+                </span>
+              </div>
+              <div class="flex-1">
+                <h2 class="font-heading text-xl font-semibold text-primary-100 group-hover:text-accent-400 transition-colors">
+                  {service.title}
+                </h2>
+                <p class="mt-2 text-primary-400">
+                  {service.description}
+                </p>
+                <ul class="mt-4 space-y-2">
+                  {service.features.map((feature) => (
+                    <li class="flex items-center gap-2 text-sm text-primary-500">
+                      <svg class="w-4 h-4 text-accent-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                      </svg>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                <div class="mt-6 flex items-center gap-2 text-accent-400 font-medium group-hover:gap-3 transition-all">
+                  Learn more
+                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section bg-primary-900">
+    <div class="container-wide">
+      <div class="text-center max-w-3xl mx-auto">
+        <h2 class="text-h2 font-heading font-bold text-primary-100">
+          Not Sure Where to Start?
+        </h2>
+        <p class="mt-4 text-lg text-primary-400">
+          Book a free AI assessment and we'll help you identify the best path forward.
+        </p>
+        <a href={CTA.primary.href} class="btn-primary mt-8">
+          {CTA.primary.label}
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,64 @@
+---
+/**
+ * Stats Section
+ *
+ * Display key statistics in a row or grid.
+ */
+
+interface Stat {
+  value: string;
+  label: string;
+}
+
+interface Props {
+  stats: Stat[];
+  background?: 'dark' | 'darker' | 'glass';
+  columns?: 2 | 3 | 4;
+}
+
+const {
+  stats,
+  background = 'darker',
+  columns = 4,
+} = Astro.props;
+
+const columnClasses = {
+  2: 'md:grid-cols-2',
+  3: 'md:grid-cols-3',
+  4: 'md:grid-cols-2 lg:grid-cols-4',
+};
+
+const backgrounds = {
+  dark: 'bg-primary-900',
+  darker: 'bg-primary-950',
+  glass: 'glass rounded-2xl p-8 lg:p-12',
+};
+
+const isGlass = background === 'glass';
+---
+
+{isGlass ? (
+  <div class={backgrounds[background]}>
+    <div class={`grid grid-cols-1 ${columnClasses[columns]} gap-8`}>
+      {stats.map((stat) => (
+        <div class="text-center">
+          <div class="text-5xl font-bold text-gradient">{stat.value}</div>
+          <p class="mt-2 text-sm text-primary-400">{stat.label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+) : (
+  <section class={`section-sm ${backgrounds[background]}`}>
+    <div class="container-wide">
+      <div class={`grid grid-cols-1 ${columnClasses[columns]} gap-8`}>
+        {stats.map((stat) => (
+          <div class="text-center">
+            <div class="text-5xl font-bold text-gradient">{stat.value}</div>
+            <p class="mt-2 text-primary-400">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}

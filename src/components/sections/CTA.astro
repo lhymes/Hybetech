@@ -1,0 +1,64 @@
+---
+/**
+ * Call to Action Section
+ */
+
+interface Props {
+  title: string;
+  description: string;
+  primaryCTA?: {
+    label: string;
+    href: string;
+  };
+  secondaryCTA?: {
+    label: string;
+    href: string;
+  };
+  background?: 'dark' | 'darker' | 'mesh';
+}
+
+const {
+  title,
+  description,
+  primaryCTA,
+  secondaryCTA,
+  background = 'darker',
+} = Astro.props;
+
+const backgrounds = {
+  dark: 'bg-primary-900',
+  darker: 'bg-primary-950',
+  mesh: 'bg-primary-950',
+};
+---
+
+<section class={`section ${backgrounds[background]} relative overflow-hidden`}>
+  {background === 'mesh' && (
+    <div class="absolute inset-0 bg-mesh opacity-50"></div>
+  )}
+
+  <div class="container-wide relative z-10">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-h2 font-heading font-bold text-primary-100">
+        {title}
+      </h2>
+      <p class="mt-4 text-lg text-primary-400">
+        {description}
+      </p>
+      {(primaryCTA || secondaryCTA) && (
+        <div class="flex flex-wrap justify-center gap-4 mt-8">
+          {primaryCTA && (
+            <a href={primaryCTA.href} class="btn-primary text-base px-8 py-4">
+              {primaryCTA.label}
+            </a>
+          )}
+          {secondaryCTA && (
+            <a href={secondaryCTA.href} class="btn-secondary text-base px-8 py-4">
+              {secondaryCTA.label}
+            </a>
+          )}
+        </div>
+      )}
+    </div>
+  </div>
+</section>

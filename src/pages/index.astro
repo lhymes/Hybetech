@@ -1,0 +1,310 @@
+---
+/**
+ * Home Page
+ *
+ * Structure:
+ * - Hero section with value proposition
+ * - Trust bar (client logos)
+ * - Services overview
+ * - Case study preview
+ * - CTA section
+ */
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { SITE, SERVICES, CTA } from '@/lib/constants';
+import { IMAGES } from '@/lib/images';
+import AnimatedHero from '@/components/islands/AnimatedHero';
+import AnimatedSection from '@/components/islands/AnimatedSection';
+import AnimatedCard from '@/components/islands/AnimatedCard';
+import AnimatedCounter from '@/components/islands/AnimatedCounter';
+import FloatingElements from '@/components/islands/FloatingElements';
+
+const stats = [
+  { value: '50+', label: 'Years Combined Experience' },
+  { value: '100%', label: 'Client-Focused Approach' },
+  { value: '24h', label: 'Response Time' },
+  { value: '40%', label: 'Avg. Efficiency Gain' },
+];
+---
+
+<BaseLayout
+  title={SITE.title}
+  description={SITE.description}
+>
+  <!-- Hero Section -->
+  <section class="relative min-h-[85vh] flex items-center overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img
+        src={IMAGES.hero.aiAbstract}
+        alt=""
+        class="w-full h-full object-cover opacity-20"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-primary-900/80 via-primary-900/90 to-primary-950"></div>
+    </div>
+
+    <!-- Floating Elements -->
+    <FloatingElements client:load variant="default" />
+
+    <div class="container-wide relative z-10 py-20">
+      <AnimatedHero
+        client:load
+        badge="Boutique AI Solutions"
+        title="AI Solutions That"
+        highlightedText="Actually Work for Your Business"
+        description="We help growing businesses harness the power of AI without the complexity. From consultation to custom development, we deliver real results."
+      >
+        <div class="flex flex-wrap gap-4">
+          <a href={CTA.primary.href} class="btn-primary text-base px-8 py-4 group">
+            {CTA.primary.label}
+            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a href={CTA.secondary.href} class="btn-secondary text-base px-8 py-4">
+            {CTA.secondary.label}
+          </a>
+        </div>
+
+        <!-- Trust Signals -->
+        <div class="mt-16">
+          <p class="text-sm text-primary-500 mb-4">Trusted by forward-thinking companies</p>
+          <div class="flex flex-wrap items-center gap-8 opacity-60">
+            <div class="h-8 w-24 bg-primary-700/50 rounded"></div>
+            <div class="h-8 w-28 bg-primary-700/50 rounded"></div>
+            <div class="h-8 w-20 bg-primary-700/50 rounded"></div>
+            <div class="h-8 w-32 bg-primary-700/50 rounded"></div>
+          </div>
+        </div>
+      </AnimatedHero>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <svg class="w-6 h-6 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="section bg-primary-950">
+    <div class="container-wide">
+      <!-- Section Header -->
+      <AnimatedSection client:visible className="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-h2 font-heading font-bold text-primary-100">
+          How We Help You Succeed
+        </h2>
+        <p class="mt-4 text-lg text-primary-400">
+          From strategy to implementation, we guide you through every step of your AI journey.
+        </p>
+      </AnimatedSection>
+
+      <!-- Services Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {SERVICES.map((service, index) => (
+          <AnimatedCard client:visible index={index} href={service.href}>
+            <!-- Icon -->
+            <div class="w-12 h-12 rounded-xl bg-accent-500/10 flex items-center justify-center mb-4 group-hover:bg-accent-500/20 transition-colors">
+              <span class="text-2xl text-accent-400">
+                {index === 0 && '🧠'}
+                {index === 1 && '🎓'}
+                {index === 2 && '🚀'}
+                {index === 3 && '💻'}
+              </span>
+            </div>
+
+            <!-- Content -->
+            <h3 class="font-heading text-lg font-semibold text-primary-100 group-hover:text-accent-400 transition-colors">
+              {service.title}
+            </h3>
+            <p class="mt-2 text-sm text-primary-400">
+              {service.description}
+            </p>
+
+            <!-- Features -->
+            <ul class="mt-4 space-y-1">
+              {service.features.slice(0, 3).map((feature) => (
+                <li class="flex items-center gap-2 text-xs text-primary-500">
+                  <svg class="w-3 h-3 text-accent-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+
+            <!-- Arrow -->
+            <div class="mt-4 flex items-center gap-1 text-sm font-medium text-accent-400 group-hover:gap-2 transition-all">
+              Learn more
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </div>
+          </AnimatedCard>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Hybetech Section -->
+  <section class="section bg-primary-900 relative overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img
+        src={IMAGES.about.team}
+        alt=""
+        class="w-full h-full object-cover opacity-5"
+        loading="lazy"
+      />
+    </div>
+
+    <div class="container-wide relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Content -->
+        <AnimatedSection client:visible direction="left">
+          <h2 class="text-h2 font-heading font-bold text-primary-100">
+            Why Choose a Boutique AI Partner?
+          </h2>
+          <p class="mt-4 text-lg text-primary-400">
+            We're not a massive consulting firm with layers of bureaucracy. We're a focused team of AI experts who work directly with you to solve real problems.
+          </p>
+
+          <ul class="mt-8 space-y-4">
+            <li class="flex items-start gap-4 group">
+              <div class="w-10 h-10 rounded-lg bg-accent-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-accent-500/20 transition-colors">
+                <svg class="w-5 h-5 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-primary-100">Fast & Agile</h4>
+                <p class="text-sm text-primary-400">No red tape. We move quickly to deliver results.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4 group">
+              <div class="w-10 h-10 rounded-lg bg-accent-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-accent-500/20 transition-colors">
+                <svg class="w-5 h-5 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-primary-100">Direct Access to Experts</h4>
+                <p class="text-sm text-primary-400">Work directly with senior AI specialists, not junior consultants.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4 group">
+              <div class="w-10 h-10 rounded-lg bg-accent-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-accent-500/20 transition-colors">
+                <svg class="w-5 h-5 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-primary-100">Tailored Solutions</h4>
+                <p class="text-sm text-primary-400">Every solution is built specifically for your needs.</p>
+              </div>
+            </li>
+          </ul>
+        </AnimatedSection>
+
+        <!-- Stats -->
+        <AnimatedSection client:visible direction="right" delay={0.2}>
+          <div class="glass rounded-2xl p-8 lg:p-12">
+            <div class="grid grid-cols-2 gap-8">
+              {stats.map((stat, index) => (
+                <AnimatedCounter
+                  client:visible
+                  value={stat.value}
+                  label={stat.label}
+                  duration={2 + index * 0.3}
+                />
+              ))}
+            </div>
+          </div>
+        </AnimatedSection>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Case Study Preview -->
+  <section class="section bg-primary-950">
+    <div class="container-wide">
+      <AnimatedSection client:visible>
+        <div class="glass rounded-2xl overflow-hidden">
+          <div class="grid grid-cols-1 lg:grid-cols-2">
+            <!-- Image -->
+            <div class="relative h-64 lg:h-auto">
+              <img
+                src={IMAGES.caseStudies.legal}
+                alt="Case study preview"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-r from-transparent to-primary-900/80 lg:bg-gradient-to-l"></div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-8 lg:p-12 flex flex-col justify-center">
+              <span class="badge mb-4 w-fit">Featured Case Study</span>
+              <h2 class="text-h3 font-heading font-bold text-primary-100">
+                40% Time Savings with AI Document Processing
+              </h2>
+              <p class="mt-4 text-primary-400">
+                How we helped a regional law firm automate contract review and reduce processing time from days to hours.
+              </p>
+              <div class="flex gap-8 mt-6">
+                <div>
+                  <div class="text-3xl font-bold text-gradient">40%</div>
+                  <div class="text-sm text-primary-500">Time Saved</div>
+                </div>
+                <div>
+                  <div class="text-3xl font-bold text-gradient">99.2%</div>
+                  <div class="text-sm text-primary-500">Accuracy</div>
+                </div>
+              </div>
+              <a
+                href="/case-studies/document-processing-automation"
+                class="btn-secondary mt-8 w-fit"
+              >
+                Read Case Study
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </AnimatedSection>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-primary-900 relative overflow-hidden">
+    <!-- Background -->
+    <div class="absolute inset-0 bg-mesh opacity-50"></div>
+    <FloatingElements client:visible variant="minimal" />
+
+    <div class="container-wide relative z-10">
+      <AnimatedSection client:visible className="max-w-3xl mx-auto text-center">
+        <h2 class="text-h2 font-heading font-bold text-primary-100">
+          Ready to Transform Your Business with AI?
+        </h2>
+        <p class="mt-4 text-lg text-primary-400">
+          Book a free assessment and discover how AI can drive real results for your business.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4 mt-8">
+          <a href={CTA.primary.href} class="btn-primary text-base px-8 py-4 group">
+            {CTA.primary.label}
+            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a href={CTA.secondary.href} class="btn-secondary text-base px-8 py-4">
+            {CTA.secondary.label}
+          </a>
+        </div>
+      </AnimatedSection>
+    </div>
+  </section>
+</BaseLayout>

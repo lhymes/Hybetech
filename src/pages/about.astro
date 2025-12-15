@@ -1,0 +1,192 @@
+---
+/**
+ * About Page
+ *
+ * Content:
+ * - Company story
+ * - Team section
+ * - Values
+ * - Credibility
+ */
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { IMAGES } from '@/lib/images';
+import AnimatedSection from '@/components/islands/AnimatedSection';
+import AnimatedCard from '@/components/islands/AnimatedCard';
+import FloatingElements from '@/components/islands/FloatingElements';
+
+const teamMembers = [
+  {
+    name: 'Team Member',
+    role: 'Co-Founder & AI Lead',
+    image: IMAGES.team.member1,
+    bio: 'Over 15 years of experience in AI and machine learning, with a passion for making complex technology accessible.',
+  },
+  {
+    name: 'Team Member',
+    role: 'Co-Founder & Strategy',
+    image: IMAGES.team.member2,
+    bio: 'Business strategist with 20 years helping companies adopt new technologies and drive digital transformation.',
+  },
+  {
+    name: 'Team Member',
+    role: 'Lead Developer',
+    image: IMAGES.team.member3,
+    bio: 'Full-stack developer specializing in AI integration and building scalable, production-ready solutions.',
+  },
+];
+---
+
+<BaseLayout
+  title="About Us"
+  description="Learn about Hybetech - a boutique AI solutions company with 50+ years of combined expertise. We make AI accessible for growing businesses."
+>
+  <!-- Hero -->
+  <section class="relative section bg-primary-900 overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img
+        src={IMAGES.about.team}
+        alt=""
+        class="w-full h-full object-cover opacity-10"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-primary-900/50 to-primary-900"></div>
+    </div>
+
+    <FloatingElements client:load variant="minimal" />
+
+    <div class="container-wide relative z-10">
+      <AnimatedSection client:visible>
+        <div class="max-w-3xl">
+          <span class="badge mb-4">Our Story</span>
+          <h1 class="text-h1 font-heading font-bold text-primary-100">
+            About Hybetech
+          </h1>
+          <p class="mt-6 text-body-lg text-primary-300">
+            We're a boutique AI solutions company on a mission to make artificial intelligence accessible and practical for businesses of all sizes.
+          </p>
+        </div>
+      </AnimatedSection>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="section bg-primary-950">
+    <div class="container-wide">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <AnimatedSection client:visible direction="left">
+          <h2 class="text-h2 font-heading font-bold text-primary-100">
+            Our Story
+          </h2>
+          <div class="mt-6 space-y-4 text-primary-400">
+            <p>
+              Founded by AI practitioners with decades of experience, Hybetech was born from a simple observation: most businesses are intimidated by AI, even though it could transform their operations.
+            </p>
+            <p>
+              We saw an opportunity to bridge the gap between cutting-edge AI technology and practical business applications. No jargon. No complexity. Just results.
+            </p>
+            <p>
+              Today, we work with forward-thinking companies who want to harness AI without the enterprise consulting firm overhead. We're small by design, allowing us to work closely with each client and deliver tailored solutions.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection client:visible direction="right" delay={0.2}>
+          <div class="glass rounded-2xl p-8">
+            <h3 class="font-heading text-xl font-semibold text-primary-100 mb-6">
+              What We Believe
+            </h3>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-accent-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-primary-300">AI should be accessible to every business, not just enterprises</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-accent-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-primary-300">Solutions should be practical and measurable</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-accent-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-primary-300">Technology serves the business, not the other way around</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-accent-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-primary-300">Long-term partnerships beat one-time projects</span>
+              </li>
+            </ul>
+          </div>
+        </AnimatedSection>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="section bg-primary-900">
+    <div class="container-wide">
+      <AnimatedSection client:visible className="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-h2 font-heading font-bold text-primary-100">
+          Meet the Team
+        </h2>
+        <p class="mt-4 text-lg text-primary-400">
+          50+ years of combined experience in AI, software development, and business consulting.
+        </p>
+      </AnimatedSection>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {teamMembers.map((member, index) => (
+          <AnimatedCard client:visible index={index}>
+            <div class="text-center">
+              <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 ring-4 ring-accent-500/20">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <h3 class="font-heading text-xl font-semibold text-primary-100">
+                {member.name}
+              </h3>
+              <p class="text-sm text-accent-400 mt-1">{member.role}</p>
+              <p class="mt-4 text-sm text-primary-400">
+                {member.bio}
+              </p>
+            </div>
+          </AnimatedCard>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section bg-primary-950 relative overflow-hidden">
+    <div class="absolute inset-0 bg-mesh opacity-50"></div>
+    <FloatingElements client:visible variant="minimal" />
+
+    <div class="container-wide relative z-10">
+      <AnimatedSection client:visible className="text-center max-w-3xl mx-auto">
+        <h2 class="text-h2 font-heading font-bold text-primary-100">
+          Ready to Work Together?
+        </h2>
+        <p class="mt-4 text-lg text-primary-400">
+          Let's discuss how we can help your business succeed with AI.
+        </p>
+        <a href="/contact" class="btn-primary mt-8 group">
+          Get in Touch
+          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </AnimatedSection>
+    </div>
+  </section>
+</BaseLayout>

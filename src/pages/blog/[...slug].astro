@@ -1,0 +1,165 @@
+---
+/**
+ * Blog Post Dynamic Route
+ */
+
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post: CollectionEntry<'blog'>) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const formattedDate = post.data.pubDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+>
+  <article>
+    <!-- Hero -->
+    <header class="section-sm bg-primary-900">
+      <div class="container-wide">
+        <div class="max-w-3xl mx-auto">
+          <div class="flex items-center gap-4 text-sm text-primary-500 mb-4">
+            <time datetime={post.data.pubDate.toISOString()}>
+              {formattedDate}
+            </time>
+            {post.data.tags.length > 0 && (
+              <>
+                <span>·</span>
+                <span>{post.data.tags[0]}</span>
+              </>
+            )}
+          </div>
+          <h1 class="text-h1 font-heading font-bold text-primary-100">
+            {post.data.title}
+          </h1>
+          <p class="mt-4 text-body-lg text-primary-300">
+            {post.data.description}
+          </p>
+          <div class="mt-6 text-sm text-primary-500">
+            By {post.data.author}
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <div class="section bg-primary-950">
+      <div class="container-wide">
+        <div class="prose prose-lg prose-invert mx-auto">
+          <Content />
+        </div>
+      </div>
+    </div>
+
+    <!-- Back Link -->
+    <div class="section-sm bg-primary-900">
+      <div class="container-wide">
+        <div class="max-w-3xl mx-auto">
+          <a
+            href="/blog"
+            class="inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-medium"
+          >
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+            </svg>
+            Back to Insights
+          </a>
+        </div>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .prose {
+    @apply max-w-none;
+  }
+
+  .prose :global(h2) {
+    @apply text-h3 font-heading font-semibold text-primary-100 mt-12 mb-4;
+  }
+
+  .prose :global(h3) {
+    @apply text-xl font-heading font-semibold text-primary-100 mt-8 mb-3;
+  }
+
+  .prose :global(p) {
+    @apply text-primary-300 mb-4 leading-relaxed;
+  }
+
+  .prose :global(a) {
+    @apply text-accent-400 hover:text-accent-300 underline;
+  }
+
+  .prose :global(ul),
+  .prose :global(ol) {
+    @apply text-primary-300 mb-4 pl-6 space-y-2;
+  }
+
+  .prose :global(ul) {
+    @apply list-disc;
+  }
+
+  .prose :global(ol) {
+    @apply list-decimal;
+  }
+
+  .prose :global(li) {
+    @apply pl-2;
+  }
+
+  .prose :global(blockquote) {
+    @apply border-l-4 border-accent-500 pl-6 my-6 italic text-primary-400;
+  }
+
+  .prose :global(code) {
+    @apply bg-primary-800 px-1.5 py-0.5 rounded text-sm text-accent-400;
+  }
+
+  .prose :global(pre) {
+    @apply bg-primary-800 rounded-lg p-4 overflow-x-auto my-6;
+  }
+
+  .prose :global(pre code) {
+    @apply bg-transparent p-0;
+  }
+
+  .prose :global(strong) {
+    @apply text-primary-100 font-semibold;
+  }
+
+  .prose :global(hr) {
+    @apply border-primary-700 my-8;
+  }
+
+  .prose :global(table) {
+    @apply w-full my-6;
+  }
+
+  .prose :global(th) {
+    @apply text-left text-primary-200 font-semibold pb-2 border-b border-primary-700;
+  }
+
+  .prose :global(td) {
+    @apply py-2 text-primary-400 border-b border-primary-800;
+  }
+</style>

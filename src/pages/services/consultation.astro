@@ -1,0 +1,231 @@
+---
+/**
+ * AI Consultation Service Page
+ */
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { CTA } from '@/lib/constants';
+import { IMAGES } from '@/lib/images';
+import AnimatedSection from '@/components/islands/AnimatedSection';
+import AnimatedCard from '@/components/islands/AnimatedCard';
+import FloatingElements from '@/components/islands/FloatingElements';
+
+const processSteps = [
+  {
+    step: '01',
+    title: 'Discovery Call',
+    description: 'We start with a 30-minute call to understand your business, challenges, and goals.',
+  },
+  {
+    step: '02',
+    title: 'AI Readiness Assessment',
+    description: 'Our experts evaluate your current systems, data, and workflows to identify AI opportunities.',
+  },
+  {
+    step: '03',
+    title: 'Opportunity Analysis',
+    description: 'We identify specific areas where AI can drive the most impact for your business.',
+  },
+  {
+    step: '04',
+    title: 'Roadmap Delivery',
+    description: 'You receive a clear, actionable roadmap with prioritized recommendations and ROI projections.',
+  },
+];
+
+const benefits = [
+  {
+    title: 'Clear Direction',
+    description: 'Know exactly where AI fits in your business and what to prioritize first.',
+    icon: '🎯',
+  },
+  {
+    title: 'Risk Mitigation',
+    description: 'Avoid costly mistakes by understanding the AI landscape before investing.',
+    icon: '🛡️',
+  },
+  {
+    title: 'ROI Clarity',
+    description: 'Get realistic projections on what AI implementations will actually deliver.',
+    icon: '📈',
+  },
+  {
+    title: 'Expert Insight',
+    description: 'Tap into 50+ years of combined AI and business experience.',
+    icon: '💡',
+  },
+];
+---
+
+<BaseLayout
+  title="AI Consultation"
+  description="Strategic AI assessment to identify opportunities and create a roadmap for your business. Get clarity on where AI fits and what to prioritize."
+>
+  <!-- Hero -->
+  <section class="relative section bg-primary-900 overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img
+        src={IMAGES.services.consultation}
+        alt=""
+        class="w-full h-full object-cover opacity-10"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-primary-900 via-primary-900/95 to-primary-900/80"></div>
+    </div>
+
+    <FloatingElements client:load variant="minimal" />
+
+    <div class="container-wide relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <AnimatedSection client:visible direction="left">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-500/10 border border-accent-500/20 mb-6">
+            <span class="text-xl">🧠</span>
+            <span class="text-sm font-medium text-accent-400">AI Consultation</span>
+          </div>
+          <h1 class="text-h1 font-heading font-bold text-primary-100">
+            Start Your AI Journey with Confidence
+          </h1>
+          <p class="mt-6 text-body-lg text-primary-300">
+            Not sure where AI fits in your business? Our strategic consultation gives you clarity, direction, and a concrete roadmap to move forward.
+          </p>
+          <div class="flex flex-wrap gap-4 mt-8">
+            <a href={CTA.primary.href} class="btn-primary group">
+              {CTA.primary.label}
+              <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+            <a href="/contact" class="btn-secondary">
+              Schedule a Call
+            </a>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection client:visible direction="right" delay={0.2}>
+          <div class="glass rounded-2xl p-8">
+          <h3 class="font-heading text-xl font-semibold text-primary-100 mb-6">
+            What You Get
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-primary-300">AI readiness assessment report</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-primary-300">Prioritized opportunity identification</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-primary-300">ROI analysis for top opportunities</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-primary-300">90-day implementation roadmap</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-primary-300">Follow-up Q&A session</span>
+            </li>
+          </ul>
+          </div>
+        </AnimatedSection>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="section bg-primary-950">
+    <div class="container-wide">
+      <AnimatedSection client:visible className="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-h2 font-heading font-bold text-primary-100">
+          Why Start with Consultation?
+        </h2>
+        <p class="mt-4 text-lg text-primary-400">
+          Many businesses jump into AI without a clear strategy. Our consultation ensures you invest in the right areas from day one.
+        </p>
+      </AnimatedSection>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {benefits.map((benefit, index) => (
+          <AnimatedCard client:visible index={index}>
+            <span class="text-4xl mb-4 block">{benefit.icon}</span>
+            <h3 class="font-heading text-lg font-semibold text-primary-100">
+              {benefit.title}
+            </h3>
+            <p class="mt-2 text-sm text-primary-400">
+              {benefit.description}
+            </p>
+          </AnimatedCard>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="section bg-primary-900">
+    <div class="container-wide">
+      <AnimatedSection client:visible className="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-h2 font-heading font-bold text-primary-100">
+          How It Works
+        </h2>
+        <p class="mt-4 text-lg text-primary-400">
+          A straightforward process designed to give you actionable insights quickly.
+        </p>
+      </AnimatedSection>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {processSteps.map((step, index) => (
+          <AnimatedCard client:visible index={index}>
+            <div class="relative text-center">
+              {index < processSteps.length - 1 && (
+                <div class="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-primary-700 -translate-x-1/2"></div>
+              )}
+              <div class="text-4xl font-bold text-accent-500/30 mb-4">{step.step}</div>
+              <h3 class="font-heading text-lg font-semibold text-primary-100">
+                {step.title}
+              </h3>
+              <p class="mt-2 text-sm text-primary-400">
+                {step.description}
+              </p>
+            </div>
+          </AnimatedCard>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section bg-primary-950 relative overflow-hidden">
+    <div class="absolute inset-0 bg-mesh opacity-50"></div>
+    <FloatingElements client:visible variant="minimal" />
+
+    <div class="container-wide relative z-10">
+      <AnimatedSection client:visible className="text-center max-w-3xl mx-auto">
+        <h2 class="text-h2 font-heading font-bold text-primary-100">
+          Ready to Get Started?
+        </h2>
+        <p class="mt-4 text-lg text-primary-400">
+          Book your free assessment call and take the first step toward AI-powered growth.
+        </p>
+        <a href={CTA.primary.href} class="btn-primary mt-8 group">
+          {CTA.primary.label}
+          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </AnimatedSection>
+    </div>
+  </section>
+</BaseLayout>

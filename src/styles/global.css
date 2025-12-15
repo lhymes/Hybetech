@@ -1,0 +1,295 @@
+/**
+ * Hybetech Global Styles
+ *
+ * This file imports Tailwind directives and custom design tokens.
+ * It also defines global styles and CSS custom properties.
+ */
+
+/* Import design token CSS variables (must come before Tailwind) */
+@import './design-tokens/global.css';
+
+/* Tailwind base, components, and utilities */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+@layer base {
+  /* Set default dark mode */
+  html {
+    @apply bg-primary-900 text-primary-100;
+    scroll-behavior: smooth;
+  }
+
+  /* Respect reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  /* Typography defaults */
+  body {
+    @apply font-body text-base leading-relaxed antialiased;
+  }
+
+  /* Headings */
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading font-bold tracking-tight;
+  }
+
+  h1 {
+    @apply text-h1;
+  }
+
+  h2 {
+    @apply text-h2;
+  }
+
+  h3 {
+    @apply text-h3;
+  }
+
+  h4 {
+    @apply text-xl;
+  }
+
+  /* Links */
+  a {
+    @apply text-accent-400 hover:text-accent-300 transition-colors duration-150;
+  }
+
+  /* Focus states */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-accent-500 ring-offset-2 ring-offset-primary-900;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-accent-500/30 text-primary-100;
+  }
+
+  /* Scrollbar styling (Webkit) */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-primary-800;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary-600 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary-500;
+  }
+}
+
+/* ============================================
+   COMPONENT STYLES
+   ============================================ */
+
+@layer components {
+  /* Container */
+  .container-narrow {
+    @apply mx-auto max-w-3xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-wide {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section spacing */
+  .section {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  .section-sm {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+
+  /* Card */
+  .card {
+    @apply bg-primary-800 rounded-xl p-6 border border-primary-700;
+  }
+
+  .card-hover {
+    @apply transition-all duration-200 hover:-translate-y-1 hover:shadow-lg;
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+
+  /* Button base */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply font-medium text-sm;
+    @apply px-6 py-3 rounded-lg;
+    @apply transition-all duration-150 ease-out;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 focus-visible:ring-offset-primary-900;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply min-h-[44px]; /* Touch target */
+  }
+
+  /* Primary CTA button */
+  .btn-primary {
+    @apply btn;
+    @apply bg-cta-primary text-white;
+    @apply hover:bg-cta-primary-hover active:bg-cta-primary-active;
+    @apply hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  /* Secondary button */
+  .btn-secondary {
+    @apply btn;
+    @apply bg-transparent border border-accent-500 text-accent-400;
+    @apply hover:bg-accent-500/10 hover:text-accent-300;
+  }
+
+  /* Ghost button */
+  .btn-ghost {
+    @apply btn;
+    @apply bg-transparent text-primary-300;
+    @apply hover:bg-primary-800 hover:text-primary-100;
+  }
+
+  /* Link with arrow */
+  .link-arrow {
+    @apply inline-flex items-center gap-2 font-medium;
+    @apply text-accent-400 hover:text-accent-300;
+    @apply transition-all duration-150;
+  }
+
+  .link-arrow:hover svg {
+    @apply translate-x-1;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center;
+    @apply px-3 py-1 rounded-full;
+    @apply text-xs font-medium;
+    @apply bg-accent-500/10 text-accent-400;
+  }
+
+  /* Gradient text */
+  .text-gradient {
+    @apply bg-gradient-to-r from-accent-400 to-violet-400 bg-clip-text text-transparent;
+  }
+
+  /* Glow effect */
+  .glow {
+    @apply shadow-glow-accent;
+  }
+
+  /* Skip link */
+  .skip-link {
+    @apply sr-only focus:not-sr-only;
+    @apply focus:absolute focus:top-4 focus:left-4;
+    @apply focus:z-50 focus:px-4 focus:py-2;
+    @apply focus:bg-accent-500 focus:text-white focus:rounded-lg;
+  }
+}
+
+/* ============================================
+   UTILITY STYLES
+   ============================================ */
+
+@layer utilities {
+  /* Hide scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Text balance for better typography */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Gradient backgrounds */
+  .bg-mesh {
+    background-image: radial-gradient(at 40% 20%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, rgba(139, 92, 246, 0.1) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, rgba(20, 184, 166, 0.1) 0px, transparent 50%);
+  }
+
+  /* Animation delay utilities */
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+}
+
+/* ============================================
+   LIGHT MODE OVERRIDES
+   ============================================ */
+
+.light {
+  @apply bg-primary-50 text-primary-900;
+}
+
+.light a {
+  @apply text-accent-600 hover:text-accent-700;
+}
+
+.light .card {
+  @apply bg-white border-primary-200;
+}
+
+.light *:focus-visible {
+  @apply ring-offset-white;
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  body {
+    @apply bg-white text-black;
+  }
+
+  nav,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+
+  a {
+    @apply text-black underline;
+  }
+
+  a[href]:after {
+    content: ' (' attr(href) ')';
+  }
+}

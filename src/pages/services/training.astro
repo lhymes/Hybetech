@@ -1,0 +1,258 @@
+---
+/**
+ * AI Training Service Page
+ */
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { CTA } from '@/lib/constants';
+import { IMAGES } from '@/lib/images';
+import AnimatedSection from '@/components/islands/AnimatedSection';
+import AnimatedCard from '@/components/islands/AnimatedCard';
+import AnimatedCounter from '@/components/islands/AnimatedCounter';
+import FloatingElements from '@/components/islands/FloatingElements';
+
+const trainingTypes = [
+  {
+    title: 'AI Fundamentals Workshop',
+    duration: '1 day',
+    description: 'Understand AI concepts, capabilities, and limitations. Perfect for leadership teams making AI investment decisions.',
+    topics: ['What AI can and cannot do', 'AI terminology demystified', 'Identifying AI opportunities', 'ROI evaluation framework'],
+  },
+  {
+    title: 'Tool-Specific Training',
+    duration: '2-3 days',
+    description: 'Hands-on training with specific AI tools relevant to your workflows. Customized to your tech stack.',
+    topics: ['ChatGPT & Claude for business', 'AI writing & content tools', 'AI-powered analytics', 'Workflow automation'],
+  },
+  {
+    title: 'AI Implementation Bootcamp',
+    duration: '1 week',
+    description: 'Intensive training for technical teams on deploying and managing AI solutions in production.',
+    topics: ['AI model integration', 'Prompt engineering', 'Quality assurance', 'Monitoring & maintenance'],
+  },
+];
+
+const outcomes = [
+  {
+    stat: '85%',
+    label: 'of teams report increased productivity after training',
+  },
+  {
+    stat: '3x',
+    label: 'faster adoption of AI tools compared to self-learning',
+  },
+  {
+    stat: '60%',
+    label: 'reduction in common AI implementation mistakes',
+  },
+];
+---
+
+<BaseLayout
+  title="AI Training"
+  description="Empower your team with hands-on AI training. From fundamentals to advanced implementation, we help your team work confidently with AI."
+>
+  <!-- Hero -->
+  <section class="relative section bg-primary-900 overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img
+        src={IMAGES.services.training}
+        alt=""
+        class="w-full h-full object-cover opacity-10"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-primary-900 via-primary-900/95 to-primary-900/80"></div>
+    </div>
+
+    <FloatingElements client:load variant="minimal" />
+
+    <div class="container-wide relative z-10">
+      <AnimatedSection client:visible>
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-500/10 border border-accent-500/20 mb-6">
+            <span class="text-xl">🎓</span>
+            <span class="text-sm font-medium text-accent-400">AI Training</span>
+          </div>
+          <h1 class="text-h1 font-heading font-bold text-primary-100">
+            Empower Your Team with AI Skills
+          </h1>
+          <p class="mt-6 text-body-lg text-primary-300">
+            Hands-on training programs that transform your team from AI curious to AI confident. Customized for your industry and workflows.
+          </p>
+          <div class="flex flex-wrap gap-4 mt-8">
+            <a href={CTA.primary.href} class="btn-primary group">
+              Discuss Training Options
+              <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+            <a href="/contact" class="btn-secondary">
+              Request Curriculum
+            </a>
+          </div>
+        </div>
+      </AnimatedSection>
+    </div>
+  </section>
+
+  <!-- Outcomes -->
+  <section class="section-sm bg-primary-950">
+    <div class="container-wide">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {outcomes.map((outcome, index) => (
+          <AnimatedCounter
+            client:visible
+            value={outcome.stat}
+            label={outcome.label}
+            duration={2 + index * 0.3}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Training Programs -->
+  <section class="section bg-primary-900">
+    <div class="container-wide">
+      <AnimatedSection client:visible className="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-h2 font-heading font-bold text-primary-100">
+          Training Programs
+        </h2>
+        <p class="mt-4 text-lg text-primary-400">
+          Choose from our proven training programs or let us create a custom curriculum for your team.
+        </p>
+      </AnimatedSection>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {trainingTypes.map((program, index) => (
+          <AnimatedCard client:visible index={index} className="flex flex-col">
+            <div class="flex items-center justify-between mb-4">
+              <span class="badge">{program.duration}</span>
+            </div>
+            <h3 class="font-heading text-xl font-semibold text-primary-100">
+              {program.title}
+            </h3>
+            <p class="mt-2 text-primary-400 flex-grow">
+              {program.description}
+            </p>
+            <div class="mt-6 pt-6 border-t border-primary-700">
+              <p class="text-sm font-medium text-primary-300 mb-3">Topics covered:</p>
+              <ul class="space-y-2">
+                {program.topics.map((topic) => (
+                  <li class="flex items-start gap-2 text-sm text-primary-400">
+                    <svg class="w-4 h-4 text-accent-500 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    {topic}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </AnimatedCard>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Custom Training -->
+  <section class="section bg-primary-950">
+    <div class="container-wide">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <AnimatedSection client:visible direction="left">
+          <h2 class="text-h2 font-heading font-bold text-primary-100">
+            Need Custom Training?
+          </h2>
+          <p class="mt-4 text-lg text-primary-400">
+            Every business is different. We can create a custom training program tailored to your specific industry, tools, and goals.
+          </p>
+          <ul class="mt-8 space-y-4">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-primary-300">Industry-specific use cases and examples</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-primary-300">Training on your actual workflows and data</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-primary-300">Ongoing support and Q&A sessions</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-primary-300">Documentation and reference materials</span>
+            </li>
+          </ul>
+        </AnimatedSection>
+        <AnimatedSection client:visible direction="right" delay={0.2}>
+          <div class="glass rounded-2xl p-8">
+          <h3 class="font-heading text-xl font-semibold text-primary-100 mb-6">
+            Training Formats
+          </h3>
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-lg bg-accent-500/10 flex items-center justify-center flex-shrink-0">
+                <span class="text-2xl">🏢</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-primary-100">On-Site</h4>
+                <p class="text-sm text-primary-400">Hands-on training at your location</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-lg bg-accent-500/10 flex items-center justify-center flex-shrink-0">
+                <span class="text-2xl">💻</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-primary-100">Virtual</h4>
+                <p class="text-sm text-primary-400">Live interactive sessions via video</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-lg bg-accent-500/10 flex items-center justify-center flex-shrink-0">
+                <span class="text-2xl">🔄</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-primary-100">Hybrid</h4>
+                <p class="text-sm text-primary-400">Mix of on-site and virtual sessions</p>
+              </div>
+            </div>
+          </div>
+          </div>
+        </AnimatedSection>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section bg-primary-900 relative overflow-hidden">
+    <div class="absolute inset-0 bg-mesh opacity-50"></div>
+    <FloatingElements client:visible variant="minimal" />
+
+    <div class="container-wide relative z-10">
+      <AnimatedSection client:visible className="text-center max-w-3xl mx-auto">
+        <h2 class="text-h2 font-heading font-bold text-primary-100">
+          Ready to Upskill Your Team?
+        </h2>
+        <p class="mt-4 text-lg text-primary-400">
+          Let's discuss your training needs and create a program that gets results.
+        </p>
+        <a href={CTA.primary.href} class="btn-primary mt-8 group">
+          {CTA.primary.label}
+          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </AnimatedSection>
+    </div>
+  </section>
+</BaseLayout>

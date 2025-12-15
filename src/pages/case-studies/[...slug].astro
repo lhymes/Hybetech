@@ -1,0 +1,185 @@
+---
+/**
+ * Case Study Dynamic Route
+ */
+
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { CTA } from '@/lib/constants';
+
+export async function getStaticPaths() {
+  const caseStudies = await getCollection('case-studies');
+  return caseStudies.map((study: CollectionEntry<'case-studies'>) => ({
+    params: { slug: study.slug },
+    props: { study },
+  }));
+}
+
+interface Props {
+  study: CollectionEntry<'case-studies'>;
+}
+
+const { study } = Astro.props;
+const { Content } = await study.render();
+---
+
+<BaseLayout
+  title={`${study.data.title} | Case Study`}
+  description={study.data.description}
+>
+  <article>
+    <!-- Hero -->
+    <header class="section bg-primary-900">
+      <div class="container-wide">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <div class="flex items-center gap-2 mb-4">
+              <span class="badge">{study.data.industry}</span>
+              {study.data.featured && (
+                <span class="badge bg-accent-500/10 text-accent-400">Featured</span>
+              )}
+            </div>
+            <h1 class="text-h1 font-heading font-bold text-primary-100">
+              {study.data.title}
+            </h1>
+            <p class="mt-4 text-lg text-primary-400">
+              {study.data.client}
+            </p>
+            <p class="mt-4 text-body-lg text-primary-300">
+              {study.data.description}
+            </p>
+            <div class="mt-6 flex flex-wrap gap-2">
+              {study.data.services.map((service: string) => (
+                <span class="badge bg-primary-800 text-primary-400">{service}</span>
+              ))}
+            </div>
+          </div>
+
+          <!-- Results Card -->
+          <div class="glass rounded-2xl p-8">
+            <h2 class="font-heading text-xl font-semibold text-primary-100 mb-6">
+              Key Results
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {study.data.results.map((result: { value: string; metric: string; description?: string }) => (
+                <div>
+                  <div class="text-4xl font-bold text-gradient">{result.value}</div>
+                  <div class="text-sm font-medium text-primary-300 mt-1">{result.metric}</div>
+                  {result.description && (
+                    <div class="text-xs text-primary-500 mt-1">{result.description}</div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <div class="section bg-primary-950">
+      <div class="container-wide">
+        <div class="prose prose-lg prose-invert mx-auto">
+          <Content />
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <section class="section bg-primary-900">
+      <div class="container-wide">
+        <div class="text-center max-w-3xl mx-auto">
+          <h2 class="text-h2 font-heading font-bold text-primary-100">
+            Ready for Similar Results?
+          </h2>
+          <p class="mt-4 text-lg text-primary-400">
+            Let's discuss how we can help your business achieve transformative outcomes with AI.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4 mt-8">
+            <a href={CTA.primary.href} class="btn-primary">
+              {CTA.primary.label}
+            </a>
+            <a href="/case-studies" class="btn-secondary">
+              View More Case Studies
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .prose {
+    @apply max-w-none;
+  }
+
+  .prose :global(h2) {
+    @apply text-h3 font-heading font-semibold text-primary-100 mt-12 mb-4;
+  }
+
+  .prose :global(h3) {
+    @apply text-xl font-heading font-semibold text-primary-100 mt-8 mb-3;
+  }
+
+  .prose :global(p) {
+    @apply text-primary-300 mb-4 leading-relaxed;
+  }
+
+  .prose :global(a) {
+    @apply text-accent-400 hover:text-accent-300 underline;
+  }
+
+  .prose :global(ul),
+  .prose :global(ol) {
+    @apply text-primary-300 mb-4 pl-6 space-y-2;
+  }
+
+  .prose :global(ul) {
+    @apply list-disc;
+  }
+
+  .prose :global(ol) {
+    @apply list-decimal;
+  }
+
+  .prose :global(li) {
+    @apply pl-2;
+  }
+
+  .prose :global(blockquote) {
+    @apply border-l-4 border-accent-500 pl-6 my-6 italic text-primary-400;
+  }
+
+  .prose :global(code) {
+    @apply bg-primary-800 px-1.5 py-0.5 rounded text-sm text-accent-400;
+  }
+
+  .prose :global(pre) {
+    @apply bg-primary-800 rounded-lg p-4 overflow-x-auto my-6;
+  }
+
+  .prose :global(pre code) {
+    @apply bg-transparent p-0;
+  }
+
+  .prose :global(strong) {
+    @apply text-primary-100 font-semibold;
+  }
+
+  .prose :global(hr) {
+    @apply border-primary-700 my-8;
+  }
+
+  .prose :global(table) {
+    @apply w-full my-6;
+  }
+
+  .prose :global(th) {
+    @apply text-left text-primary-200 font-semibold pb-2 border-b border-primary-700;
+  }
+
+  .prose :global(td) {
+    @apply py-2 text-primary-400 border-b border-primary-800;
+  }
+</style>

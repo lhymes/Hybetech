@@ -1,0 +1,296 @@
+---
+/**
+ * Boutique AI Development Service Page
+ */
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { CTA } from '@/lib/constants';
+import { IMAGES } from '@/lib/images';
+import AnimatedSection from '@/components/islands/AnimatedSection';
+import AnimatedCard from '@/components/islands/AnimatedCard';
+import FloatingElements from '@/components/islands/FloatingElements';
+
+const capabilities = [
+  {
+    title: 'Custom AI Models',
+    description: 'Purpose-built models trained on your data for your specific use cases.',
+    icon: '🧠',
+  },
+  {
+    title: 'Intelligent Agents',
+    description: 'AI agents that can reason, plan, and take action on behalf of your business.',
+    icon: '🤖',
+  },
+  {
+    title: 'API Development',
+    description: 'RESTful and GraphQL APIs that bring AI capabilities to your applications.',
+    icon: '🔌',
+  },
+  {
+    title: 'Full-Stack Solutions',
+    description: 'End-to-end AI applications with modern, user-friendly interfaces.',
+    icon: '💻',
+  },
+];
+
+const useCases = [
+  'Custom document processing and extraction',
+  'Intelligent customer service bots',
+  'Predictive analytics dashboards',
+  'Content generation pipelines',
+  'Computer vision applications',
+  'Natural language processing tools',
+  'Recommendation engines',
+  'Automated quality control systems',
+];
+---
+
+<BaseLayout
+  title="Boutique AI Development"
+  description="Custom AI solutions built specifically for your unique business challenges. Purpose-built models, intelligent agents, and full-stack applications."
+>
+  <!-- Hero -->
+  <section class="relative section bg-primary-900 overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img
+        src={IMAGES.services.development}
+        alt=""
+        class="w-full h-full object-cover opacity-10"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-primary-900 via-primary-900/95 to-primary-900/80"></div>
+    </div>
+
+    <FloatingElements client:load variant="minimal" />
+
+    <div class="container-wide relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <AnimatedSection client:visible direction="left">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-500/10 border border-accent-500/20 mb-6">
+            <span class="text-xl">💻</span>
+            <span class="text-sm font-medium text-accent-400">Boutique AI Development</span>
+          </div>
+          <h1 class="text-h1 font-heading font-bold text-primary-100">
+            AI Built Exactly for You
+          </h1>
+          <p class="mt-6 text-body-lg text-primary-300">
+            Off-the-shelf AI doesn't cut it? We build custom solutions that solve your specific challenges. From purpose-built models to complete applications.
+          </p>
+          <div class="flex flex-wrap gap-4 mt-8">
+            <a href={CTA.primary.href} class="btn-primary group">
+              Discuss Your Project
+              <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+            <a href="/case-studies" class="btn-secondary">
+              See Our Work
+            </a>
+          </div>
+        </AnimatedSection>
+        <AnimatedSection client:visible direction="right" delay={0.2}>
+          <div class="glass rounded-2xl p-8">
+          <h3 class="font-heading text-xl font-semibold text-primary-100 mb-6">
+            What Makes Us Different
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <span class="text-accent-400 font-bold">01</span>
+              <div>
+                <h4 class="font-medium text-primary-200">Boutique Approach</h4>
+                <p class="text-sm text-primary-400">Direct access to senior engineers, not junior consultants</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent-400 font-bold">02</span>
+              <div>
+                <h4 class="font-medium text-primary-200">Business-First Design</h4>
+                <p class="text-sm text-primary-400">We start with your goals, not the technology</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent-400 font-bold">03</span>
+              <div>
+                <h4 class="font-medium text-primary-200">Ownership & Support</h4>
+                <p class="text-sm text-primary-400">You own the code, we provide ongoing maintenance</p>
+              </div>
+            </li>
+          </ul>
+          </div>
+        </AnimatedSection>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capabilities -->
+  <section class="section bg-primary-950">
+    <div class="container-wide">
+      <AnimatedSection client:visible className="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-h2 font-heading font-bold text-primary-100">
+          What We Build
+        </h2>
+        <p class="mt-4 text-lg text-primary-400">
+          From custom models to complete AI applications, we handle the full development lifecycle.
+        </p>
+      </AnimatedSection>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {capabilities.map((capability, index) => (
+          <AnimatedCard client:visible index={index}>
+            <div class="flex items-start gap-6">
+              <div class="w-16 h-16 rounded-xl bg-accent-500/10 flex items-center justify-center flex-shrink-0">
+                <span class="text-3xl">{capability.icon}</span>
+              </div>
+              <div>
+                <h3 class="font-heading text-xl font-semibold text-primary-100">
+                  {capability.title}
+                </h3>
+                <p class="mt-2 text-primary-400">
+                  {capability.description}
+                </p>
+              </div>
+            </div>
+          </AnimatedCard>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases -->
+  <section class="section bg-primary-900">
+    <div class="container-wide">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <AnimatedSection client:visible direction="left">
+          <h2 class="text-h2 font-heading font-bold text-primary-100">
+            Common Use Cases
+          </h2>
+          <p class="mt-4 text-lg text-primary-400">
+            Here are some examples of custom AI solutions we've built for clients. Your challenge might be similar, or completely unique. Either way, we can help.
+          </p>
+        </AnimatedSection>
+        <AnimatedSection client:visible direction="right" delay={0.2}>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {useCases.map((useCase) => (
+              <div class="flex items-center gap-3 bg-primary-800 rounded-lg px-4 py-3">
+                <svg class="w-5 h-5 text-accent-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-sm text-primary-300">{useCase}</span>
+              </div>
+            ))}
+          </div>
+        </AnimatedSection>
+      </div>
+    </div>
+  </section>
+
+  <!-- Development Process -->
+  <section class="section bg-primary-950">
+    <div class="container-wide">
+      <AnimatedSection client:visible className="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-h2 font-heading font-bold text-primary-100">
+          Our Development Process
+        </h2>
+        <p class="mt-4 text-lg text-primary-400">
+          Agile, transparent, and collaborative. You're involved at every step.
+        </p>
+      </AnimatedSection>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <AnimatedCard client:visible index={0}>
+          <div class="text-center">
+            <div class="text-4xl font-bold text-accent-500/30 mb-4">01</div>
+            <h3 class="font-heading text-lg font-semibold text-primary-100">
+              Discovery & Design
+            </h3>
+            <p class="mt-2 text-sm text-primary-400">
+              We dive deep into your requirements, design the solution architecture, and create a detailed project plan.
+            </p>
+          </div>
+        </AnimatedCard>
+        <AnimatedCard client:visible index={1}>
+          <div class="text-center">
+            <div class="text-4xl font-bold text-accent-500/30 mb-4">02</div>
+            <h3 class="font-heading text-lg font-semibold text-primary-100">
+              Iterative Development
+            </h3>
+            <p class="mt-2 text-sm text-primary-400">
+              We build in sprints with regular demos and feedback loops. You see progress every week.
+            </p>
+          </div>
+        </AnimatedCard>
+        <AnimatedCard client:visible index={2}>
+          <div class="text-center">
+            <div class="text-4xl font-bold text-accent-500/30 mb-4">03</div>
+            <h3 class="font-heading text-lg font-semibold text-primary-100">
+              Launch & Maintain
+            </h3>
+            <p class="mt-2 text-sm text-primary-400">
+              We deploy to production, train your team, and provide ongoing maintenance and improvements.
+            </p>
+          </div>
+        </AnimatedCard>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technology Stack -->
+  <section class="section bg-primary-900">
+    <div class="container-wide">
+      <AnimatedSection client:visible>
+        <div class="glass rounded-2xl p-8 lg:p-12">
+          <div class="text-center mb-12">
+            <h2 class="text-h3 font-heading font-bold text-primary-100">
+              Technologies We Use
+            </h2>
+            <p class="mt-2 text-primary-400">
+              We choose the right tools for each project. Here are some of our favorites.
+            </p>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="text-center">
+              <p class="font-medium text-primary-200">AI/ML</p>
+              <p class="text-sm text-primary-500">OpenAI, Anthropic, Hugging Face</p>
+            </div>
+            <div class="text-center">
+              <p class="font-medium text-primary-200">Backend</p>
+              <p class="text-sm text-primary-500">Python, Node.js, Go</p>
+            </div>
+            <div class="text-center">
+              <p class="font-medium text-primary-200">Frontend</p>
+              <p class="text-sm text-primary-500">React, Next.js, TypeScript</p>
+            </div>
+            <div class="text-center">
+              <p class="font-medium text-primary-200">Infrastructure</p>
+              <p class="text-sm text-primary-500">AWS, GCP, Azure, Vercel</p>
+            </div>
+          </div>
+        </div>
+      </AnimatedSection>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section bg-primary-950 relative overflow-hidden">
+    <div class="absolute inset-0 bg-mesh opacity-50"></div>
+    <FloatingElements client:visible variant="minimal" />
+
+    <div class="container-wide relative z-10">
+      <AnimatedSection client:visible className="text-center max-w-3xl mx-auto">
+        <h2 class="text-h2 font-heading font-bold text-primary-100">
+          Have a Project in Mind?
+        </h2>
+        <p class="mt-4 text-lg text-primary-400">
+          Let's discuss your requirements and explore how we can build something great together.
+        </p>
+        <a href={CTA.primary.href} class="btn-primary mt-8 group">
+          {CTA.primary.label}
+          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </AnimatedSection>
+    </div>
+  </section>
+</BaseLayout>
