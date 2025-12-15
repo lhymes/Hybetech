@@ -75,15 +75,15 @@ export default function AnimatedHero({
       >
         {title}
         {highlightedText && (
-          <span className="text-gradient">
+          <>
             {' '}
             {enableShine ? (
               highlightedText.split('').map((char, index) => (
                 <motion.span
                   key={index}
-                  className="inline-block"
+                  className="text-gradient"
                   style={{
-                    whiteSpace: char === ' ' ? 'pre' : 'normal',
+                    display: 'inline',
                   }}
                   animate={{
                     filter: [
@@ -100,13 +100,13 @@ export default function AnimatedHero({
                     delay: 2 + index * 0.03,
                   }}
                 >
-                  {char}
+                  {char === ' ' ? '\u00A0' : char}
                 </motion.span>
               ))
             ) : (
-              highlightedText
+              <span className="text-gradient">{highlightedText}</span>
             )}
-          </span>
+          </>
         )}
       </motion.h1>
 
