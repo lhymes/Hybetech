@@ -101,7 +101,7 @@ High-contrast colors for primary and secondary actions.
 
 | Usage | Font | Tailwind Class |
 |-------|------|----------------|
-| Headlines | Space Grotesk | `font-heading` |
+| Headlines | Plus Jakarta Sans | `font-heading` |
 | Body | Inter | `font-body` |
 | Code | JetBrains Mono | `font-mono` |
 
@@ -111,7 +111,7 @@ High-contrast colors for primary and secondary actions.
 <!-- Add to <head> -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
 ```
 
 ### Type Scale
