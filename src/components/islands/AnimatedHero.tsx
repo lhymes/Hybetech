@@ -75,40 +75,32 @@ export default function AnimatedHero({
       >
         {title}
         {highlightedText && (
-          <span className="relative inline-block">
-            <span
-              className="text-gradient"
-              style={{
-                filter: 'drop-shadow(0 0 20px rgba(59, 130, 246, 0.4)) drop-shadow(0 0 40px rgba(139, 92, 246, 0.2))',
-              }}
-            >
-              {' '}{highlightedText}
-            </span>
-            {/* Shine overlay */}
-            {enableShine && (
-              <motion.span
-                className="absolute inset-0 overflow-hidden pointer-events-none"
-                aria-hidden="true"
-              >
-                <motion.span
-                  className="absolute inset-0"
-                  style={{
-                    background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 60%, transparent 100%)',
-                    transform: 'skewX(-20deg)',
-                  }}
-                  initial={{ x: '-150%' }}
-                  animate={{ x: '150%' }}
-                  transition={{
-                    duration: 1.5,
-                    ease: 'easeInOut',
-                    repeat: Infinity,
-                    repeatDelay: 5,
-                    delay: 2,
-                  }}
-                />
-              </motion.span>
-            )}
-          </span>
+          <motion.span
+            className="text-gradient inline-block"
+            animate={
+              enableShine
+                ? {
+                    filter: [
+                      'drop-shadow(0 0 8px rgba(59, 130, 246, 0.3)) drop-shadow(0 0 20px rgba(139, 92, 246, 0.15))',
+                      'drop-shadow(0 0 25px rgba(59, 130, 246, 0.6)) drop-shadow(0 0 50px rgba(139, 92, 246, 0.4))',
+                      'drop-shadow(0 0 8px rgba(59, 130, 246, 0.3)) drop-shadow(0 0 20px rgba(139, 92, 246, 0.15))',
+                    ],
+                  }
+                : undefined
+            }
+            transition={{
+              duration: 3,
+              ease: 'easeInOut',
+              repeat: Infinity,
+              repeatDelay: 4,
+              delay: 2,
+            }}
+            style={{
+              filter: 'drop-shadow(0 0 8px rgba(59, 130, 246, 0.3)) drop-shadow(0 0 20px rgba(139, 92, 246, 0.15))',
+            }}
+          >
+            {' '}{highlightedText}
+          </motion.span>
         )}
       </motion.h1>
 
