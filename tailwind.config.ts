@@ -135,7 +135,7 @@ const config: Config = {
 
       // Typography
       fontFamily: {
-        heading: ['Space Grotesk', ...defaultTheme.fontFamily.sans],
+        heading: ['Plus Jakarta Sans', ...defaultTheme.fontFamily.sans],
         body: ['Inter', ...defaultTheme.fontFamily.sans],
         mono: ['JetBrains Mono', ...defaultTheme.fontFamily.mono],
       },

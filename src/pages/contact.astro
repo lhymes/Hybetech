@@ -10,6 +10,7 @@
 
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { SITE } from '@/lib/constants';
+import { IMAGES } from '@/lib/images';
 import AnimatedSection from '@/components/islands/AnimatedSection';
 import FloatingElements from '@/components/islands/FloatingElements';
 ---
@@ -20,6 +21,17 @@ import FloatingElements from '@/components/islands/FloatingElements';
 >
   <!-- Hero -->
   <section class="relative section-sm bg-primary-900 overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img
+        src={IMAGES.people.casualMeeting}
+        alt=""
+        class="w-full h-full object-cover opacity-15"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-primary-900 via-primary-900/95 to-primary-900/80"></div>
+    </div>
+
     <FloatingElements client:load variant="minimal" />
 
     <div class="container-wide relative z-10">
@@ -188,9 +200,52 @@ import FloatingElements from '@/components/islands/FloatingElements';
                 <span class="text-accent-400 font-semibold">Response Time:</span> We pride ourselves on fast communication. Expect a response within 24 hours on business days.
               </p>
             </div>
+
+            <!-- Friendly Image -->
+            <div class="mt-8 rounded-xl overflow-hidden">
+              <img
+                src={IMAGES.people.happyTeam}
+                alt="Our friendly team ready to help"
+                class="w-full h-48 object-cover"
+                loading="lazy"
+              />
+            </div>
           </div>
         </AnimatedSection>
       </div>
+    </div>
+  </section>
+
+  <!-- Why Reach Out Section -->
+  <section class="section-sm bg-primary-900">
+    <div class="container-wide">
+      <AnimatedSection client:visible>
+        <div class="glass rounded-2xl p-8 lg:p-12">
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 text-center">
+            <div>
+              <div class="w-16 h-16 rounded-full bg-accent-500/10 flex items-center justify-center mx-auto mb-4">
+                <span class="text-3xl">💬</span>
+              </div>
+              <h3 class="font-heading font-semibold text-primary-100">No Pressure</h3>
+              <p class="mt-2 text-sm text-primary-400">We're here to help, not sell. Ask anything.</p>
+            </div>
+            <div>
+              <div class="w-16 h-16 rounded-full bg-accent-500/10 flex items-center justify-center mx-auto mb-4">
+                <span class="text-3xl">🤝</span>
+              </div>
+              <h3 class="font-heading font-semibold text-primary-100">Real People</h3>
+              <p class="mt-2 text-sm text-primary-400">Talk directly with our AI experts.</p>
+            </div>
+            <div>
+              <div class="w-16 h-16 rounded-full bg-accent-500/10 flex items-center justify-center mx-auto mb-4">
+                <span class="text-3xl">⚡</span>
+              </div>
+              <h3 class="font-heading font-semibold text-primary-100">Quick Response</h3>
+              <p class="mt-2 text-sm text-primary-400">24-hour response on business days.</p>
+            </div>
+          </div>
+        </div>
+      </AnimatedSection>
     </div>
   </section>
 </BaseLayout>

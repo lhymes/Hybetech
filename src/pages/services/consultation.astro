@@ -206,8 +206,48 @@ const benefits = [
     </div>
   </section>
 
+  <!-- Who We Work With -->
+  <section class="section bg-primary-950">
+    <div class="container-wide">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <AnimatedSection client:visible direction="left">
+          <div class="rounded-2xl overflow-hidden">
+            <img
+              src={IMAGES.services.discussion}
+              alt="Team collaborating on strategy"
+              class="w-full h-80 object-cover"
+              loading="lazy"
+            />
+          </div>
+        </AnimatedSection>
+        <AnimatedSection client:visible direction="right" delay={0.2}>
+          <h2 class="text-h3 font-heading font-bold text-primary-100">
+            Perfect For Businesses Ready to Explore AI
+          </h2>
+          <p class="mt-4 text-primary-400">
+            Whether you're just starting to think about AI or you've tried it before without success, our consultation gives you the clarity you need to move forward with confidence.
+          </p>
+          <ul class="mt-6 space-y-3">
+            <li class="flex items-center gap-3 text-primary-300">
+              <span class="text-accent-400">✓</span>
+              Companies with 10-500 employees
+            </li>
+            <li class="flex items-center gap-3 text-primary-300">
+              <span class="text-accent-400">✓</span>
+              Businesses exploring AI for the first time
+            </li>
+            <li class="flex items-center gap-3 text-primary-300">
+              <span class="text-accent-400">✓</span>
+              Teams that need direction, not just technology
+            </li>
+          </ul>
+        </AnimatedSection>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
-  <section class="section bg-primary-950 relative overflow-hidden">
+  <section class="section bg-primary-900 relative overflow-hidden">
     <div class="absolute inset-0 bg-mesh opacity-50"></div>
     <FloatingElements client:visible variant="minimal" />
 
