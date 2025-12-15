@@ -17,22 +17,16 @@ import FloatingElements from '@/components/islands/FloatingElements';
 
 const teamMembers = [
   {
-    name: 'Team Member',
-    role: 'Co-Founder & AI Lead',
-    image: IMAGES.team.member1,
-    bio: 'Over 15 years of experience in AI and machine learning, with a passion for making complex technology accessible.',
-  },
-  {
-    name: 'Team Member',
-    role: 'Co-Founder & Strategy',
+    name: 'Larry Hymes',
+    role: 'Co-Founder',
     image: IMAGES.team.member2,
-    bio: 'Business strategist with 20 years helping companies adopt new technologies and drive digital transformation.',
+    bio: 'Over 25 years of professional IT experience across all industries. Specializes in enterprise architecture, technology strategy, and complex system implementations. Has delivered projects for Fortune 500 companies and growing businesses alike.',
   },
   {
-    name: 'Team Member',
-    role: 'Lead Developer',
-    image: IMAGES.team.member3,
-    bio: 'Full-stack developer specializing in AI integration and building scalable, production-ready solutions.',
+    name: 'Jeff Blake',
+    role: 'Co-Founder',
+    image: IMAGES.team.member4,
+    bio: 'Over 25 years of software development and coding expertise. Has supported Fortune 100 companies in development roles and now specializes in AI solutions development and implementation, helping businesses automate processes and gain competitive advantages.',
   },
 ];
 ---
@@ -81,13 +75,13 @@ const teamMembers = [
           </h2>
           <div class="mt-6 space-y-4 text-primary-400">
             <p>
-              Founded by AI practitioners with decades of experience, Hybetech was born from a simple observation: most businesses are intimidated by AI, even though it could transform their operations.
+              Larry and Jeff have been friends and collaborators for 25 years. What started as occasional project partnerships evolved into Hybetech, built on trust, proven expertise, and a shared vision of making advanced technology accessible to businesses of all sizes.
             </p>
             <p>
-              We saw an opportunity to bridge the gap between cutting-edge AI technology and practical business applications. No jargon. No complexity. Just results.
+              With over 50 years of combined experience delivering solutions for Fortune 500 companies and growing businesses alike, we saw an opportunity to bring enterprise-level AI expertise to companies that are often overlooked by the big consulting firms.
             </p>
             <p>
-              Today, we work with forward-thinking companies who want to harness AI without the enterprise consulting firm overhead. We're small by design, allowing us to work closely with each client and deliver tailored solutions.
+              Today, we bridge the gap between business needs and technical solutions. We speak both languages fluently, helping our clients harness AI without the complexity, jargon, or overhead. We're small by design, allowing us to work closely with each client and deliver tailored solutions.
             </p>
           </div>
         </AnimatedSection>
@@ -134,14 +128,14 @@ const teamMembers = [
     <div class="container-wide">
       <AnimatedSection client:visible className="text-center max-w-3xl mx-auto mb-12">
         <h2 class="text-h2 font-heading font-bold text-primary-100">
-          Meet the Team
+          Meet the Founders
         </h2>
         <p class="mt-4 text-lg text-primary-400">
-          50+ years of combined experience in AI, software development, and business consulting.
+          50+ years of combined experience in enterprise architecture, software development, and AI solutions.
         </p>
       </AnimatedSection>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
         {teamMembers.map((member, index) => (
           <AnimatedCard client:visible index={index}>
             <div class="text-center">
