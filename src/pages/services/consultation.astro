@@ -29,7 +29,7 @@ const processSteps = [
   {
     step: '04',
     title: 'Roadmap Delivery',
-    description: 'You receive a clear, actionable roadmap with prioritized recommendations and ROI projections.',
+    description: 'You receive a clear, actionable roadmap with prioritized recommendations.',
   },
 ];
 
@@ -185,12 +185,12 @@ const benefits = [
         </p>
       </AnimatedSection>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4 items-start">
         {processSteps.map((step, index) => (
           <div class="relative">
             <AnimatedCard client:visible index={index}>
               <div class="text-center">
-                <div class="text-4xl font-bold text-accent-500/30 mb-4">{step.step}</div>
+                <div class={`step-number step-number-${index + 1} text-4xl font-bold text-accent-500/30 mb-4`}>{step.step}</div>
                 <h3 class="font-heading text-lg font-semibold text-primary-100">
                   {step.title}
                 </h3>
@@ -203,7 +203,7 @@ const benefits = [
             {/* Animated connector arrow */}
             {index < processSteps.length - 1 && (
               <div class="hidden lg:flex absolute top-1/2 -right-2 translate-x-1/2 -translate-y-1/2 z-10 items-center justify-center w-8 h-8">
-                <div class="process-connector">
+                <div class={`process-connector process-connector-${index + 1}`}>
                   <svg class="w-5 h-5 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                   </svg>
@@ -281,31 +281,57 @@ const benefits = [
 </BaseLayout>
 
 <style>
+  /* Step number sequential pulse animation */
+  .step-number {
+    animation: number-pulse 8s ease-in-out infinite;
+  }
+
+  .step-number-1 { animation-delay: 0s; }
+  .step-number-2 { animation-delay: 1.5s; }
+  .step-number-3 { animation-delay: 3s; }
+  .step-number-4 { animation-delay: 4.5s; }
+
+  @keyframes number-pulse {
+    0%, 12%, 100% {
+      color: rgba(59, 130, 246, 0.3);
+      text-shadow: none;
+    }
+    6% {
+      color: rgba(59, 130, 246, 0.8);
+      text-shadow: 0 0 20px rgba(59, 130, 246, 0.6), 0 0 40px rgba(59, 130, 246, 0.3);
+    }
+  }
+
+  /* Connector arrow sequential pulse - follows each number */
   .process-connector {
-    animation: pulse-glow 2s ease-in-out infinite;
+    animation: connector-pulse 8s ease-in-out infinite;
   }
 
   .process-connector svg {
-    animation: nudge-right 2s ease-in-out infinite;
+    animation: nudge-right 8s ease-in-out infinite;
   }
 
-  @keyframes pulse-glow {
-    0%, 100% {
+  .process-connector-1, .process-connector-1 svg { animation-delay: 0.5s; }
+  .process-connector-2, .process-connector-2 svg { animation-delay: 2s; }
+  .process-connector-3, .process-connector-3 svg { animation-delay: 3.5s; }
+
+  @keyframes connector-pulse {
+    0%, 12%, 100% {
       opacity: 0.4;
       filter: drop-shadow(0 0 2px rgba(59, 130, 246, 0.3));
     }
-    50% {
+    6% {
       opacity: 1;
-      filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.6));
+      filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.8));
     }
   }
 
   @keyframes nudge-right {
-    0%, 100% {
+    0%, 12%, 100% {
       transform: translateX(0);
     }
-    50% {
-      transform: translateX(3px);
+    6% {
+      transform: translateX(4px);
     }
   }
 </style>
