@@ -154,45 +154,45 @@ import FloatingElements from '@/components/islands/FloatingElements';
 
           <div class="space-y-6">
             <!-- Email -->
-            <div class="card">
+            <a href={`mailto:${SITE.email}`} class="card block group cursor-pointer transition-all duration-150 hover:scale-[1.02] hover:border-accent-500/30">
               <div class="flex items-start gap-4">
-                <div class="w-12 h-12 rounded-lg bg-accent-500/10 flex items-center justify-center flex-shrink-0">
+                <div class="w-12 h-12 rounded-lg bg-accent-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-accent-500/20 transition-colors">
                   <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
                 <div>
-                  <h3 class="font-semibold text-primary-100">Email</h3>
-                  <a href={`mailto:${SITE.email}`} class="text-accent-400 hover:text-accent-300">
+                  <h3 class="font-semibold text-primary-100 group-hover:text-accent-400 transition-colors">Email</h3>
+                  <span class="text-accent-400 group-hover:text-accent-300">
                     {SITE.email}
-                  </a>
+                  </span>
                   <p class="text-sm text-primary-500 mt-1">We typically respond within 24 hours.</p>
                 </div>
               </div>
-            </div>
+            </a>
 
             <!-- Book a Call -->
-            <div class="card">
+            <a href="#" class="card block group cursor-pointer transition-all duration-150 hover:scale-[1.02] hover:border-accent-500/30">
               <div class="flex items-start gap-4">
-                <div class="w-12 h-12 rounded-lg bg-accent-500/10 flex items-center justify-center flex-shrink-0">
+                <div class="w-12 h-12 rounded-lg bg-accent-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-accent-500/20 transition-colors">
                   <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
                 </div>
                 <div>
-                  <h3 class="font-semibold text-primary-100">Book a Call</h3>
+                  <h3 class="font-semibold text-primary-100 group-hover:text-accent-400 transition-colors">Book a Call</h3>
                   <p class="text-primary-400">
                     Schedule a 15-minute intro call to discuss your needs.
                   </p>
-                  <a href="#" class="inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 mt-2 text-sm font-medium">
+                  <span class="inline-flex items-center gap-2 text-accent-400 group-hover:text-accent-300 mt-2 text-sm font-medium">
                     Book a time
-                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                     </svg>
-                  </a>
+                  </span>
                 </div>
               </div>
-            </div>
+            </a>
 
             <!-- Response Time -->
             <div class="glass rounded-xl p-6">
