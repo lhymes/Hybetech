@@ -18,6 +18,7 @@ import AnimatedSection from '@/components/islands/AnimatedSection';
 import AnimatedCard from '@/components/islands/AnimatedCard';
 import AnimatedCounter from '@/components/islands/AnimatedCounter';
 import FloatingElements from '@/components/islands/FloatingElements';
+import FrostedImage from '@/components/islands/FrostedImage';
 
 const stats = [
   { value: '50+', label: 'Years Combined Experience' },
@@ -106,17 +107,19 @@ const stats = [
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           <div class="order-2 lg:order-1">
             <div class="grid grid-cols-2 gap-4">
-              <img
+              <FrostedImage
+                client:visible
                 src={IMAGES.people.happyTeam}
                 alt="Our collaborative team"
-                class="rounded-xl w-full h-48 object-cover"
-                loading="lazy"
+                className="w-full h-48 object-cover"
+                containerClassName="rounded-xl"
               />
-              <img
+              <FrostedImage
+                client:visible
                 src={IMAGES.people.casualMeeting}
                 alt="Team collaboration"
-                class="rounded-xl w-full h-48 object-cover"
-                loading="lazy"
+                className="w-full h-48 object-cover"
+                containerClassName="rounded-xl"
               />
             </div>
           </div>
@@ -285,15 +288,15 @@ const stats = [
         <div class="glass rounded-2xl overflow-hidden">
           <div class="grid grid-cols-1 lg:grid-cols-2">
             <!-- Image -->
-            <div class="relative h-64 lg:h-auto">
-              <img
-                src={IMAGES.caseStudies.legal}
-                alt="Case study preview"
-                class="w-full h-full object-cover"
-                loading="lazy"
-              />
+            <FrostedImage
+              client:visible
+              src={IMAGES.caseStudies.legal}
+              alt="Case study preview"
+              className="w-full h-full object-cover"
+              containerClassName="h-64 lg:h-auto"
+            >
               <div class="absolute inset-0 bg-gradient-to-r from-transparent to-primary-900/80 lg:bg-gradient-to-l"></div>
-            </div>
+            </FrostedImage>
 
             <!-- Content -->
             <div class="p-8 lg:p-12 flex flex-col justify-center">
