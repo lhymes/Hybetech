@@ -185,19 +185,32 @@ const benefits = [
         </p>
       </AnimatedSection>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
         {processSteps.map((step, index) => (
-          <AnimatedCard client:visible index={index}>
-            <div class="text-center">
-              <div class="text-4xl font-bold text-accent-500/30 mb-4">{step.step}</div>
-              <h3 class="font-heading text-lg font-semibold text-primary-100">
-                {step.title}
-              </h3>
-              <p class="mt-2 text-sm text-primary-400">
-                {step.description}
-              </p>
-            </div>
-          </AnimatedCard>
+          <div class="relative">
+            <AnimatedCard client:visible index={index}>
+              <div class="text-center">
+                <div class="text-4xl font-bold text-accent-500/30 mb-4">{step.step}</div>
+                <h3 class="font-heading text-lg font-semibold text-primary-100">
+                  {step.title}
+                </h3>
+                <p class="mt-2 text-sm text-primary-400">
+                  {step.description}
+                </p>
+              </div>
+            </AnimatedCard>
+
+            {/* Animated connector arrow */}
+            {index < processSteps.length - 1 && (
+              <div class="hidden lg:flex absolute top-1/2 -right-2 translate-x-1/2 -translate-y-1/2 z-10 items-center justify-center w-8 h-8">
+                <div class="process-connector">
+                  <svg class="w-5 h-5 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </div>
+            )}
+          </div>
         ))}
       </div>
     </div>
@@ -266,3 +279,33 @@ const benefits = [
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .process-connector {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .process-connector svg {
+    animation: nudge-right 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 0.4;
+      filter: drop-shadow(0 0 2px rgba(59, 130, 246, 0.3));
+    }
+    50% {
+      opacity: 1;
+      filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.6));
+    }
+  }
+
+  @keyframes nudge-right {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(3px);
+    }
+  }
+</style>
