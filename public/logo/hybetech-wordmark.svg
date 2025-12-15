@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 48" fill="none">
+  <!--
+    Hybetech Wordmark Logo
+
+    Design Philosophy:
+    - Clean, geometric sans-serif letterforms
+    - Distinctive accent: subtle blue node extending from the H crossbar
+    - This small detail suggests connectivity, networks, and AI
+    - Works at any size, maintains legibility
+    - Professional, trustworthy, modern
+
+    Usage:
+    - Primary: Use on dark backgrounds with currentColor inheriting white/light
+    - The accent node is always #3b82f6 (accent blue)
+    - Minimum size: 100px width for digital, 1" for print
+  -->
+
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700');
+      .wordmark { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 28px; }
+    </style>
+  </defs>
+
+  <!-- Main wordmark text -->
+  <text x="0" y="32" class="wordmark" fill="currentColor">Hybetech</text>
+
+  <!-- Accent: Connection node extending from H -->
+  <circle cx="23" cy="20" r="3" fill="#3b82f6"/>
+  <line x1="18" y1="20" x2="21" y2="20" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+</svg>

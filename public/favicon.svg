@@ -1,10 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
-    </linearGradient>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!--
+    Hybetech Favicon
+    The stylized "H" with connection node accent
+  -->
+
+  <!-- Background -->
   <rect width="32" height="32" rx="6" fill="#0f172a"/>
-  <text x="16" y="22" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="url(#grad)" text-anchor="middle">H</text>
+
+  <!-- H letterform -->
+  <path
+    d="M6 6h4v8h12V6h4v20h-4v-8H10v8H6V6z"
+    fill="#f1f5f9"
+  />
+
+  <!-- Connection node accent -->
+  <circle cx="25" cy="14" r="2.5" fill="#3b82f6"/>
+  <line x1="22" y1="14" x2="23.5" y2="14" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
 </svg>

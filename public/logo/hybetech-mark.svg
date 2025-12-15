@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!--
+    Hybetech Icon Mark
+
+    The distinctive "H" with connection node accent.
+    Use for favicons, app icons, social media avatars,
+    and anywhere the full wordmark won't fit.
+  -->
+
+  <!-- H letterform -->
+  <path
+    d="M8 8h7v12h18V8h7v32h-7V26H15v14H8V8z"
+    fill="currentColor"
+  />
+
+  <!-- Connection node accent -->
+  <circle cx="38" cy="20" r="4" fill="#3b82f6"/>
+  <line x1="33" y1="20" x2="35" y2="20" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/>
+</svg>
