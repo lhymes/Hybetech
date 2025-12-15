@@ -105,6 +105,10 @@ const fullTitle = title === SITE.title ? title : `${title} | ${SITE.name}`;
     <slot name="head" />
   </head>
   <body class="min-h-screen flex flex-col">
+    <!-- Smoked glass vignette effect -->
+    <div class="pointer-events-none fixed inset-x-0 top-0 z-[9998] h-32 bg-gradient-to-b from-primary-950/80 via-primary-950/20 to-transparent" aria-hidden="true"></div>
+    <div class="pointer-events-none fixed inset-x-0 bottom-0 z-[9998] h-32 bg-gradient-to-t from-primary-950/80 via-primary-950/20 to-transparent" aria-hidden="true"></div>
+
     <!-- Skip to main content link -->
     <a href="#main-content" class="skip-link">
       Skip to main content
