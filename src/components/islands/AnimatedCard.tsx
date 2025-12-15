@@ -1,12 +1,12 @@
 /**
  * Animated Card Component
  *
- * Interactive card with CSS hover effects and Motion entrance animation.
- * Uses CSS for hover to avoid sluggish JS-based hover detection.
+ * Interactive card with CSS hover effects and smooth entrance animation.
+ * Uses CSS transitions to avoid hydration flash issues on mobile.
  */
 
-import { motion } from 'motion/react';
-import type { ReactNode } from 'react';
+import { useInView } from 'motion/react';
+import { useRef, type ReactNode } from 'react';
 
 interface AnimatedCardProps {
   children: ReactNode;
@@ -21,20 +21,21 @@ export default function AnimatedCard({
   href,
   className = '',
 }: AnimatedCardProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+
   const cardContent = (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{
-        duration: 0.5,
-        delay: index * 0.1,
-        ease: [0.25, 0.1, 0.25, 1],
+    <div
+      ref={ref}
+      style={{
+        opacity: isInView ? 1 : 0,
+        transform: isInView ? 'translateY(0)' : 'translateY(20px)',
+        transition: `opacity 0.4s ease-out ${index * 0.08}s, transform 0.4s ease-out ${index * 0.08}s`,
       }}
-      className={`card group cursor-pointer transition-all duration-150 ease-out hover:scale-[1.02] hover:shadow-lg hover:shadow-accent-500/10 hover:border-accent-500/30 ${className}`}
+      className={`card group cursor-pointer transition-shadow duration-150 ease-out hover:scale-[1.02] hover:shadow-lg hover:shadow-accent-500/10 hover:border-accent-500/30 ${className}`}
     >
       {children}
-    </motion.div>
+    </div>
   );
 
   if (href) {

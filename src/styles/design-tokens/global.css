@@ -106,7 +106,7 @@
   --text-6xl: 3.75rem;
 
   /* Fluid Typography */
-  --text-display: clamp(2.25rem, 5vw + 1rem, 4.5rem);
+  --text-display: clamp(1.75rem, 5vw + 1rem, 4.5rem);
   --text-h1: clamp(1.875rem, 3vw + 1rem, 3rem);
   --text-h2: clamp(1.5rem, 2vw + 1rem, 2.25rem);
   --text-h3: clamp(1.25rem, 1.5vw + 0.75rem, 1.875rem);

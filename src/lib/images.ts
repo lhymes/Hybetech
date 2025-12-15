@@ -73,16 +73,16 @@ export const IMAGES = {
     customerService: 'https://images.unsplash.com/photo-1556745757-8d76bdb6984b?w=800&q=80',
   },
 
-  // Placeholder team photos (professional headshots)
+  // Placeholder team photos - generic silhouettes until real headshots are provided
   team: {
-    // Professional woman by Christina @ wocintechchat.com
-    member1: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&q=80',
-    // Professional man by LinkedIn Sales Solutions
-    member2: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80',
-    // Professional woman by Amy Hirschi
-    member3: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80',
-    // Professional man by Itay Verchik
-    member4: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80',
+    // Generic male silhouette placeholder
+    member1: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Cdefs%3E%3ClinearGradient id='bg1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%231e293b'/%3E%3Cstop offset='100%25' stop-color='%230f172a'/%3E%3C/linearGradient%3E%3ClinearGradient id='accent1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%233b82f6' stop-opacity='0.3'/%3E%3Cstop offset='100%25' stop-color='%238b5cf6' stop-opacity='0.2'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23bg1)' width='400' height='400'/%3E%3Ccircle cx='200' cy='140' r='70' fill='%23334155'/%3E%3Cellipse cx='200' cy='340' rx='100' ry='80' fill='%23334155'/%3E%3Ccircle cx='200' cy='200' r='180' fill='url(%23accent1)' opacity='0.5'/%3E%3C/svg%3E",
+    // Generic male silhouette placeholder
+    member2: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Cdefs%3E%3ClinearGradient id='bg2' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%231e293b'/%3E%3Cstop offset='100%25' stop-color='%230f172a'/%3E%3C/linearGradient%3E%3ClinearGradient id='accent2' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2314b8a6' stop-opacity='0.3'/%3E%3Cstop offset='100%25' stop-color='%233b82f6' stop-opacity='0.2'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23bg2)' width='400' height='400'/%3E%3Ccircle cx='200' cy='140' r='70' fill='%23334155'/%3E%3Cellipse cx='200' cy='340' rx='100' ry='80' fill='%23334155'/%3E%3Ccircle cx='200' cy='200' r='180' fill='url(%23accent2)' opacity='0.5'/%3E%3C/svg%3E",
+    // Generic male silhouette placeholder
+    member3: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Cdefs%3E%3ClinearGradient id='bg3' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%231e293b'/%3E%3Cstop offset='100%25' stop-color='%230f172a'/%3E%3C/linearGradient%3E%3ClinearGradient id='accent3' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%238b5cf6' stop-opacity='0.3'/%3E%3Cstop offset='100%25' stop-color='%2314b8a6' stop-opacity='0.2'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23bg3)' width='400' height='400'/%3E%3Ccircle cx='200' cy='140' r='70' fill='%23334155'/%3E%3Cellipse cx='200' cy='340' rx='100' ry='80' fill='%23334155'/%3E%3Ccircle cx='200' cy='200' r='180' fill='url(%23accent3)' opacity='0.5'/%3E%3C/svg%3E",
+    // Generic male silhouette placeholder
+    member4: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Cdefs%3E%3ClinearGradient id='bg4' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%231e293b'/%3E%3Cstop offset='100%25' stop-color='%230f172a'/%3E%3C/linearGradient%3E%3ClinearGradient id='accent4' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%233b82f6' stop-opacity='0.25'/%3E%3Cstop offset='100%25' stop-color='%238b5cf6' stop-opacity='0.25'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23bg4)' width='400' height='400'/%3E%3Ccircle cx='200' cy='140' r='70' fill='%23334155'/%3E%3Cellipse cx='200' cy='340' rx='100' ry='80' fill='%23334155'/%3E%3Ccircle cx='200' cy='200' r='180' fill='url(%23accent4)' opacity='0.5'/%3E%3C/svg%3E",
   },
 
   // Contact page

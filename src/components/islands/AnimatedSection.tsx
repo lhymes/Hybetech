@@ -1,12 +1,12 @@
 /**
  * Animated Section Component
  *
- * Scroll-triggered fade and slide animations using Motion library.
- * Use as a React island in Astro pages.
+ * Scroll-triggered fade and slide animations.
+ * Uses CSS transitions to avoid hydration flash issues on mobile.
  */
 
-import { motion } from 'motion/react';
-import type { ReactNode } from 'react';
+import { useInView } from 'motion/react';
+import { useRef, type ReactNode } from 'react';
 
 interface AnimatedSectionProps {
   children: ReactNode;
@@ -21,29 +21,30 @@ export default function AnimatedSection({
   direction = 'up',
   className = '',
 }: AnimatedSectionProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.15 });
+
   const directionOffsets = {
-    up: { y: 40, x: 0 },
-    down: { y: -40, x: 0 },
-    left: { y: 0, x: 40 },
-    right: { y: 0, x: -40 },
-    none: { y: 0, x: 0 },
+    up: 'translateY(30px)',
+    down: 'translateY(-30px)',
+    left: 'translateX(30px)',
+    right: 'translateX(-30px)',
+    none: 'translate(0, 0)',
   };
 
   const offset = directionOffsets[direction];
 
   return (
-    <motion.div
-      initial={{ opacity: 0, ...offset }}
-      whileInView={{ opacity: 1, y: 0, x: 0 }}
-      viewport={{ once: true, margin: '-100px' }}
-      transition={{
-        duration: 0.6,
-        delay,
-        ease: [0.25, 0.1, 0.25, 1],
+    <div
+      ref={ref}
+      style={{
+        opacity: isInView ? 1 : 0,
+        transform: isInView ? 'translate(0, 0)' : offset,
+        transition: `opacity 0.5s ease-out ${delay}s, transform 0.5s ease-out ${delay}s`,
       }}
       className={className}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

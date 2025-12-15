@@ -2,13 +2,17 @@
 
 A modern, performant website for Hybetech - a boutique AI solutions company founded by Larry Hymes and Jeff Blake.
 
+**Live Site**: https://hybe.tech
+
 ## Tech Stack
 
 - **Framework**: [Astro 5.x](https://astro.build/) - Static site generator with islands architecture
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
-- **Animations**: [Motion](https://motion.dev/) (Framer Motion) - React animation library
+- **Animations**: [Motion](https://motion.dev/) - React animation library (useInView hook)
 - **Language**: TypeScript
 - **Package Manager**: pnpm
+- **Hosting**: AWS Lightsail (Ubuntu + nginx)
+- **SSL**: Let's Encrypt (auto-renewed via certbot)
 
 ## Project Structure
 
@@ -16,11 +20,12 @@ A modern, performant website for Hybetech - a boutique AI solutions company foun
 src/
 ├── components/
 │   ├── islands/          # React components with client-side interactivity
-│   │   ├── AnimatedHero.tsx
-│   │   ├── AnimatedSection.tsx
-│   │   ├── AnimatedCard.tsx
-│   │   ├── AnimatedCounter.tsx
-│   │   └── FloatingElements.tsx
+│   │   ├── AnimatedHero.tsx      # Hero with gradient text shine effect
+│   │   ├── AnimatedSection.tsx   # Scroll-triggered fade animations
+│   │   ├── AnimatedCard.tsx      # Card entrance animations
+│   │   ├── AnimatedCounter.tsx   # Number counting animation
+│   │   ├── FloatingElements.tsx  # Floating decorative elements
+│   │   └── FrostedImage.tsx      # Images with frosted overlay effect
 │   └── layout/           # Static layout components
 │       ├── Header.astro
 │       └── Footer.astro
@@ -28,7 +33,7 @@ src/
 │   └── BaseLayout.astro  # Main page layout with SEO, fonts, etc.
 ├── lib/
 │   ├── constants.ts      # Site config, services, CTAs
-│   └── images.ts         # Centralized image URLs (Unsplash)
+│   └── images.ts         # Centralized image URLs (Unsplash + placeholders)
 ├── pages/
 │   ├── index.astro       # Homepage
 │   ├── about.astro       # About page
@@ -38,9 +43,18 @@ src/
 │       ├── training.astro
 │       ├── implementation.astro
 │       └── development.astro
-└── styles/
-    ├── global.css        # Global styles
-    └── design-tokens/    # CSS custom properties
+├── styles/
+│   ├── global.css        # Global styles
+│   └── design-tokens/    # CSS custom properties
+└── content/              # MDX content collections
+    ├── blog/
+    └── case-studies/
+
+public/
+├── images/
+│   └── og-image.jpg      # Social sharing image
+├── logo/                 # Brand assets
+└── favicon.svg
 
 docs/
 ├── discovery-report.md   # Initial project research
@@ -82,12 +96,12 @@ pnpm preview
 
 ### Animations
 
-- Scroll-triggered reveal animations
-- Hero headline glow effect with sweeping illumination
+- Scroll-triggered reveal animations using CSS transitions (mobile-optimized)
+- Hero headline glow effect with character-level shine (desktop only)
 - Subtle pulse effects on icons throughout the site
-- Sequential animations on process steps
+- Sequential staggered animations on cards and sections
 - CSS-only hover effects for optimal performance
-- Respects `prefers-reduced-motion`
+- Respects `prefers-reduced-motion` via CSS media query
 
 ### Pages
 
@@ -121,29 +135,42 @@ Primary palette uses deep slate/navy tones. See `docs/design-system.md` for full
 
 ## Deployment
 
-The site is static and can be deployed to any static hosting:
+Currently deployed to **AWS Lightsail** (Ubuntu 22.04 + nginx).
 
+### Production Server
+
+- **IP**: 50.16.3.15
+- **Domain**: hybe.tech (with www redirect)
+- **SSL**: Let's Encrypt with auto-renewal
+- **Security Headers**: HSTS, CSP, X-Frame-Options, etc.
+
+### Deploy Process
+
+```bash
+# Build the site
+pnpm build
+
+# Deploy to server (requires SSH key)
+rsync -avz --delete dist/ ubuntu@50.16.3.15:/var/www/hybetech/
+```
+
+### Alternative Hosting
+
+The site is static and can also be deployed to:
 - Vercel
 - Netlify
 - Cloudflare Pages
 - AWS S3 + CloudFront
-- AWS Lightsail (current)
-
-### Build Output
-
-```bash
-pnpm build
-# Output in dist/
-```
 
 ## TODO
 
-- [ ] Configure Formspree form ID
-- [ ] Add real client logos to trust bar
+- [x] ~~Run Lighthouse performance audit~~
+- [x] ~~Add security headers (HSTS, CSP)~~
+- [x] ~~Create OG image for social sharing~~
+- [ ] Set up Microsoft Graph email integration (Lambda + API Gateway)
+- [ ] Replace placeholder team photos with real professional headshots
 - [ ] Integrate Calendly booking widget
-- [ ] Replace placeholder team photos
-- [ ] Run Lighthouse performance audit
-- [ ] Set up CI/CD deployment
+- [ ] Set up CI/CD deployment (GitHub Actions)
 
 ## Documentation
 

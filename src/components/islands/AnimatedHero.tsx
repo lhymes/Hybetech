@@ -7,6 +7,7 @@
 
 import { motion } from 'motion/react';
 import type { ReactNode } from 'react';
+import { useState, useEffect } from 'react';
 
 interface AnimatedHeroProps {
   badge?: string;
@@ -25,6 +26,22 @@ export default function AnimatedHero({
   children,
   enableShine = true,
 }: AnimatedHeroProps) {
+  // Detect if we're on mobile - disable shine animation on mobile to prevent layout issues
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640); // sm breakpoint
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Only animate shine on desktop (mobile has layout issues with character-level animation)
+  const shouldAnimate = enableShine && !isMobile;
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -53,7 +70,7 @@ export default function AnimatedHero({
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="max-w-4xl"
+      className="max-w-4xl w-full overflow-hidden box-border"
     >
       {badge && (
         <motion.div
@@ -71,7 +88,8 @@ export default function AnimatedHero({
 
       <motion.h1
         variants={itemVariants}
-        className="text-display font-heading font-bold text-primary-100 leading-tight text-balance"
+        className="text-display font-heading font-bold text-primary-100 leading-tight"
+        style={{ wordBreak: 'break-word', overflowWrap: 'break-word' }}
       >
         {title}
         {highlightedText && (
@@ -80,37 +98,43 @@ export default function AnimatedHero({
             <span
               className="text-gradient"
               style={{
-                // This creates a gradient that spans all letters
                 backgroundSize: '100%',
                 backgroundClip: 'text',
                 WebkitBackgroundClip: 'text',
+                wordBreak: 'break-word',
               }}
             >
-              {enableShine ? (
-                highlightedText.split('').map((char, index) => (
-                  <motion.span
-                    key={index}
-                    style={{
-                      display: 'inline',
-                      color: 'inherit',
-                    }}
-                    animate={{
-                      textShadow: [
-                        '0 0 0px rgba(59, 130, 246, 0)',
-                        '0 0 12px rgba(59, 130, 246, 0.9), 0 0 25px rgba(139, 92, 246, 0.6), 0 0 40px rgba(59, 130, 246, 0.4)',
-                        '0 0 0px rgba(59, 130, 246, 0)',
-                      ],
-                    }}
-                    transition={{
-                      duration: 0.5,
-                      ease: 'easeOut',
-                      repeat: Infinity,
-                      repeatDelay: 12,
-                      delay: 3 + index * 0.025,
-                    }}
-                  >
-                    {char === ' ' ? '\u00A0' : char}
-                  </motion.span>
+              {shouldAnimate ? (
+                // Wrap words instead of characters to allow proper line breaking
+                // Space is outside the nowrap span to allow breaks between words
+                highlightedText.split(' ').map((word, wordIndex) => (
+                  <span key={wordIndex}>
+                    {wordIndex > 0 && ' '}
+                    <span style={{ whiteSpace: 'nowrap' }}>
+                      {word.split('').map((char, charIndex) => (
+                        <motion.span
+                          key={charIndex}
+                          style={{ display: 'inline', color: 'inherit' }}
+                          animate={{
+                            textShadow: [
+                              '0 0 0px rgba(59, 130, 246, 0)',
+                              '0 0 12px rgba(59, 130, 246, 0.9), 0 0 25px rgba(139, 92, 246, 0.6), 0 0 40px rgba(59, 130, 246, 0.4)',
+                              '0 0 0px rgba(59, 130, 246, 0)',
+                            ],
+                          }}
+                          transition={{
+                            duration: 0.5,
+                            ease: 'easeOut',
+                            repeat: Infinity,
+                            repeatDelay: 12,
+                            delay: 3 + (wordIndex * 10 + charIndex) * 0.025,
+                          }}
+                        >
+                          {char}
+                        </motion.span>
+                      ))}
+                    </span>
+                  </span>
                 ))
               ) : (
                 highlightedText

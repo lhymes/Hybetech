@@ -23,8 +23,8 @@ export default function AnimatedCounter({
 
   // Extract numeric value and suffix (e.g., "50+" -> 50, "+")
   const numericMatch = value.match(/^(\d+)(.*)$/);
-  const targetNumber = numericMatch ? parseInt(numericMatch[1], 10) : 0;
-  const suffix = numericMatch ? numericMatch[2] : value;
+  const targetNumber = numericMatch?.[1] ? parseInt(numericMatch[1], 10) : 0;
+  const suffix = numericMatch?.[2] ?? value;
   const isNumeric = numericMatch !== null;
 
   const count = useMotionValue(0);
@@ -33,8 +33,9 @@ export default function AnimatedCounter({
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !isInView) {
+      (entries) => {
+        const entry = entries[0];
+        if (entry?.isIntersecting && !isInView) {
           setIsInView(true);
         }
       },
@@ -49,21 +50,23 @@ export default function AnimatedCounter({
   }, [isInView]);
 
   useEffect(() => {
-    if (isInView && isNumeric) {
-      const controls = animate(count, targetNumber, {
-        duration,
-        ease: 'easeOut',
-      });
-
-      const unsubscribe = rounded.on('change', (latest) => {
-        setDisplayValue(latest);
-      });
-
-      return () => {
-        controls.stop();
-        unsubscribe();
-      };
+    if (!isInView || !isNumeric) {
+      return;
     }
+
+    const controls = animate(count, targetNumber, {
+      duration,
+      ease: 'easeOut',
+    });
+
+    const unsubscribe = rounded.on('change', (latest) => {
+      setDisplayValue(latest);
+    });
+
+    return () => {
+      controls.stop();
+      unsubscribe();
+    };
   }, [isInView, targetNumber, isNumeric, count, rounded, duration]);
 
   return (

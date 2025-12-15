@@ -77,11 +77,11 @@ export default defineConfig({
     },
   },
 
-  // Prefetch configuration for better navigation
-  prefetch: {
-    prefetchAll: true,
-    defaultStrategy: 'viewport',
-  },
+  // Prefetch disabled - can cause mobile link issues
+  // prefetch: {
+  //   prefetchAll: true,
+  //   defaultStrategy: 'viewport',
+  // },
 
   // Markdown configuration
   markdown: {

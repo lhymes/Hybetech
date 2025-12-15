@@ -19,8 +19,8 @@ export const SITE: {
   url: 'https://www.hybe.tech',
   author: 'Hybetech',
   email: 'contact@hybe.tech',
-  phone: '', // Add phone number when available
-  address: '', // Add address when available
+  phone: '', // Preferring callbacks for now
+  address: 'Florida, USA', // Serving nationwide
 };
 
 export const SOCIAL = {

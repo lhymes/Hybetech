@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="50%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <!-- Accent glow -->
+    <radialGradient id="glowBlue" cx="30%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="glowViolet" cx="70%" cy="70%" r="50%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="glowTeal" cx="80%" cy="20%" r="40%">
+      <stop offset="0%" stop-color="#14b8a6" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#14b8a6" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Text gradient -->
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+
+  <!-- Ambient glow effects -->
+  <rect width="1200" height="630" fill="url(#glowBlue)"/>
+  <rect width="1200" height="630" fill="url(#glowViolet)"/>
+  <rect width="1200" height="630" fill="url(#glowTeal)"/>
+
+  <!-- Subtle grid pattern -->
+  <g opacity="0.03">
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#fff" stroke-width="1"/>
+    </pattern>
+    <rect width="1200" height="630" fill="url(#grid)"/>
+  </g>
+
+  <!-- Logo mark -->
+  <g transform="translate(100, 180)">
+    <!-- Stylized H mark -->
+    <rect x="0" y="0" width="12" height="80" rx="3" fill="#3b82f6"/>
+    <rect x="38" y="0" width="12" height="80" rx="3" fill="#8b5cf6"/>
+    <rect x="0" y="34" width="50" height="12" rx="3" fill="url(#textGrad)"/>
+  </g>
+
+  <!-- Company name -->
+  <text x="180" y="245" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="700" fill="#f1f5f9">
+    HYBETECH
+  </text>
+
+  <!-- Tagline -->
+  <text x="100" y="340" font-family="system-ui, -apple-system, sans-serif" font-size="42" font-weight="500" fill="url(#textGrad)">
+    Boutique AI Solutions
+  </text>
+
+  <!-- Description -->
+  <text x="100" y="420" font-family="system-ui, -apple-system, sans-serif" font-size="26" fill="#94a3b8">
+    AI Solutions That Actually Work for Your Business
+  </text>
+
+  <!-- Services list -->
+  <g font-family="system-ui, -apple-system, sans-serif" font-size="20" fill="#64748b">
+    <text x="100" y="500">Consultation</text>
+    <text x="100" y="530">Training</text>
+    <text x="300" y="500">Implementation</text>
+    <text x="300" y="530">Development</text>
+  </g>
+
+  <!-- Website URL -->
+  <text x="100" y="590" font-family="system-ui, -apple-system, sans-serif" font-size="22" fill="#3b82f6">
+    hybe.tech
+  </text>
+
+  <!-- Decorative elements -->
+  <circle cx="1050" cy="200" r="120" fill="none" stroke="#3b82f6" stroke-width="1" opacity="0.2"/>
+  <circle cx="1050" cy="200" r="80" fill="none" stroke="#8b5cf6" stroke-width="1" opacity="0.15"/>
+  <circle cx="1050" cy="200" r="40" fill="#3b82f6" opacity="0.1"/>
+
+  <!-- Corner accent -->
+  <path d="M1200 0 L1200 150 L1050 0 Z" fill="#3b82f6" opacity="0.05"/>
+  <path d="M0 630 L0 530 L100 630 Z" fill="#8b5cf6" opacity="0.05"/>
+</svg>

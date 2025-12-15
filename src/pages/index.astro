@@ -48,7 +48,7 @@ const stats = [
     <!-- Floating Elements -->
     <FloatingElements client:load variant="default" />
 
-    <div class="container-wide relative z-10 py-20">
+    <div class="container-wide relative z-10 py-20 max-w-full">
       <AnimatedHero
         client:load
         badge="Boutique AI Solutions"
@@ -56,34 +56,34 @@ const stats = [
         highlightedText="Actually Work for Your Business"
         description="We help growing businesses harness the power of AI without the complexity. From consultation to custom development, we deliver real results."
       >
-        <div class="flex flex-wrap gap-4">
-          <a href={CTA.primary.href} class="btn-primary text-base px-8 py-4 group">
+        <div class="flex flex-col sm:flex-row flex-wrap gap-4">
+          <a href={CTA.primary.href} class="btn-primary text-base px-6 sm:px-8 py-3 sm:py-4 group">
             {CTA.primary.label}
             <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
-          <a href={CTA.secondary.href} class="btn-secondary text-base px-8 py-4">
+          <a href={CTA.secondary.href} class="btn-secondary text-base px-6 sm:px-8 py-3 sm:py-4">
             {CTA.secondary.label}
           </a>
         </div>
 
         <!-- Credibility -->
-        <div class="mt-16 flex flex-wrap items-center gap-6 text-sm text-primary-400">
+        <div class="mt-10 sm:mt-16 flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-3 sm:gap-6 text-sm text-primary-400">
           <div class="flex items-center gap-2">
-            <svg class="w-5 h-5 text-accent-500" fill="currentColor" viewBox="0 0 20 20">
+            <svg class="w-5 h-5 text-accent-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
             </svg>
             <span>50+ Years Combined Experience</span>
           </div>
           <div class="flex items-center gap-2">
-            <svg class="w-5 h-5 text-accent-500" fill="currentColor" viewBox="0 0 20 20">
+            <svg class="w-5 h-5 text-accent-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
             </svg>
             <span>Fortune 500 Background</span>
           </div>
           <div class="flex items-center gap-2">
-            <svg class="w-5 h-5 text-accent-500" fill="currentColor" viewBox="0 0 20 20">
+            <svg class="w-5 h-5 text-accent-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
             </svg>
             <span>Boutique & Personal</span>
@@ -125,10 +125,10 @@ const stats = [
           </div>
           <div class="order-1 lg:order-2">
             <h2 class="text-h3 font-heading font-bold text-primary-100">
-              Real People. Real Results.
+              AI Guided by Human Expertise
             </h2>
             <p class="mt-4 text-primary-400">
-              We're not a faceless corporation. We're Larry and Jeff — two seasoned professionals with 50+ years of combined experience who genuinely enjoy helping businesses succeed. When you work with us, you work directly with us.
+              We believe the best AI solutions combine cutting-edge technology with experienced human judgment. We're Larry and Jeff — two seasoned professionals with 50+ years of combined experience who ensure AI works <em class="text-primary-300 not-italic">for</em> your business, not the other way around.
             </p>
             <a href="/about" class="inline-flex items-center gap-2 mt-6 text-accent-400 hover:text-accent-300 font-medium">
               Meet the founders
