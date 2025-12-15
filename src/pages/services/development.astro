@@ -139,7 +139,7 @@ const useCases = [
         {capabilities.map((capability, index) => (
           <AnimatedCard client:visible index={index}>
             <div class="flex items-start gap-6">
-              <div class="w-16 h-16 rounded-xl bg-accent-500/10 flex items-center justify-center flex-shrink-0">
+              <div class={`cap-icon cap-icon-${index + 1} w-16 h-16 rounded-xl bg-accent-500/10 flex items-center justify-center flex-shrink-0`}>
                 <span class="text-3xl">{capability.icon}</span>
               </div>
               <div>
@@ -294,3 +294,24 @@ const useCases = [
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  /* Capability icons staggered pulse */
+  .cap-icon {
+    animation: cap-glow 10s ease-in-out infinite;
+  }
+
+  .cap-icon-1 { animation-delay: 0s; }
+  .cap-icon-2 { animation-delay: 2.5s; }
+  .cap-icon-3 { animation-delay: 5s; }
+  .cap-icon-4 { animation-delay: 7.5s; }
+
+  @keyframes cap-glow {
+    0%, 10%, 100% {
+      box-shadow: none;
+    }
+    5% {
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.5), 0 0 40px rgba(59, 130, 246, 0.2);
+    }
+  }
+</style>

@@ -146,7 +146,7 @@ const stats = [
         {SERVICES.map((service, index) => (
           <AnimatedCard client:visible index={index} href={service.href}>
             <!-- Icon -->
-            <div class="w-12 h-12 rounded-xl bg-accent-500/10 flex items-center justify-center mb-4 group-hover:bg-accent-500/20 transition-colors">
+            <div class={`service-icon service-icon-${index + 1} w-12 h-12 rounded-xl bg-accent-500/10 flex items-center justify-center mb-4 group-hover:bg-accent-500/20 transition-colors`}>
               <span class="text-2xl text-accent-400">
                 {index === 0 && '🧠'}
                 {index === 1 && '🎓'}
@@ -348,3 +348,24 @@ const stats = [
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  /* Service icon pulse - staggered timing */
+  .service-icon {
+    animation: icon-glow 10s ease-in-out infinite;
+  }
+
+  .service-icon-1 { animation-delay: 0s; }
+  .service-icon-2 { animation-delay: 2.5s; }
+  .service-icon-3 { animation-delay: 5s; }
+  .service-icon-4 { animation-delay: 7.5s; }
+
+  @keyframes icon-glow {
+    0%, 10%, 100% {
+      box-shadow: none;
+    }
+    5% {
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.4), 0 0 40px rgba(59, 130, 246, 0.2);
+    }
+  }
+</style>

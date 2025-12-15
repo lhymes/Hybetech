@@ -155,7 +155,7 @@ const processSteps = [
         {processSteps.map((step, index) => (
           <AnimatedCard client:visible index={index}>
             <div class="text-center">
-              <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent-500 text-white font-bold mb-4">
+              <div class={`impl-step impl-step-${index + 1} inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent-500 text-white font-bold mb-4`}>
                 {index + 1}
               </div>
               <div class="text-sm font-medium text-accent-400 mb-2">{step.phase}</div>
@@ -268,3 +268,26 @@ const processSteps = [
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  /* Implementation step numbers sequential pulse */
+  .impl-step {
+    animation: impl-pulse 10s ease-in-out infinite;
+  }
+
+  .impl-step-1 { animation-delay: 0s; }
+  .impl-step-2 { animation-delay: 2s; }
+  .impl-step-3 { animation-delay: 4s; }
+  .impl-step-4 { animation-delay: 6s; }
+
+  @keyframes impl-pulse {
+    0%, 12%, 100% {
+      box-shadow: none;
+      transform: scale(1);
+    }
+    6% {
+      box-shadow: 0 0 25px rgba(59, 130, 246, 0.8), 0 0 50px rgba(59, 130, 246, 0.4);
+      transform: scale(1.1);
+    }
+  }
+</style>

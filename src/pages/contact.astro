@@ -223,21 +223,21 @@ import FloatingElements from '@/components/islands/FloatingElements';
         <div class="glass rounded-2xl p-8 lg:p-12">
           <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 text-center">
             <div>
-              <div class="w-16 h-16 rounded-full bg-accent-500/10 flex items-center justify-center mx-auto mb-4">
+              <div class="contact-icon contact-icon-1 w-16 h-16 rounded-full bg-accent-500/10 flex items-center justify-center mx-auto mb-4">
                 <span class="text-3xl">💬</span>
               </div>
               <h3 class="font-heading font-semibold text-primary-100">No Pressure</h3>
               <p class="mt-2 text-sm text-primary-400">We're here to help, not sell. Ask anything.</p>
             </div>
             <div>
-              <div class="w-16 h-16 rounded-full bg-accent-500/10 flex items-center justify-center mx-auto mb-4">
+              <div class="contact-icon contact-icon-2 w-16 h-16 rounded-full bg-accent-500/10 flex items-center justify-center mx-auto mb-4">
                 <span class="text-3xl">🤝</span>
               </div>
               <h3 class="font-heading font-semibold text-primary-100">Real People</h3>
               <p class="mt-2 text-sm text-primary-400">Talk directly with Larry or Jeff.</p>
             </div>
             <div>
-              <div class="w-16 h-16 rounded-full bg-accent-500/10 flex items-center justify-center mx-auto mb-4">
+              <div class="contact-icon contact-icon-3 w-16 h-16 rounded-full bg-accent-500/10 flex items-center justify-center mx-auto mb-4">
                 <span class="text-3xl">⚡</span>
               </div>
               <h3 class="font-heading font-semibold text-primary-100">Quick Response</h3>
@@ -249,3 +249,23 @@ import FloatingElements from '@/components/islands/FloatingElements';
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  /* Contact icons pulse */
+  .contact-icon {
+    animation: contact-glow 9s ease-in-out infinite;
+  }
+
+  .contact-icon-1 { animation-delay: 0s; }
+  .contact-icon-2 { animation-delay: 3s; }
+  .contact-icon-3 { animation-delay: 6s; }
+
+  @keyframes contact-glow {
+    0%, 15%, 100% {
+      box-shadow: none;
+    }
+    7% {
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.5), 0 0 40px rgba(59, 130, 246, 0.2);
+    }
+  }
+</style>

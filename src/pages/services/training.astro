@@ -200,7 +200,7 @@ const outcomes = [
           </h3>
           <div class="space-y-6">
             <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-lg bg-accent-500/10 flex items-center justify-center flex-shrink-0">
+              <div class="format-icon format-icon-1 w-12 h-12 rounded-lg bg-accent-500/10 flex items-center justify-center flex-shrink-0">
                 <span class="text-2xl">🏢</span>
               </div>
               <div>
@@ -209,7 +209,7 @@ const outcomes = [
               </div>
             </div>
             <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-lg bg-accent-500/10 flex items-center justify-center flex-shrink-0">
+              <div class="format-icon format-icon-2 w-12 h-12 rounded-lg bg-accent-500/10 flex items-center justify-center flex-shrink-0">
                 <span class="text-2xl">💻</span>
               </div>
               <div>
@@ -218,7 +218,7 @@ const outcomes = [
               </div>
             </div>
             <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-lg bg-accent-500/10 flex items-center justify-center flex-shrink-0">
+              <div class="format-icon format-icon-3 w-12 h-12 rounded-lg bg-accent-500/10 flex items-center justify-center flex-shrink-0">
                 <span class="text-2xl">🔄</span>
               </div>
               <div>
@@ -256,3 +256,23 @@ const outcomes = [
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  /* Training format icons pulse */
+  .format-icon {
+    animation: format-glow 9s ease-in-out infinite;
+  }
+
+  .format-icon-1 { animation-delay: 0s; }
+  .format-icon-2 { animation-delay: 3s; }
+  .format-icon-3 { animation-delay: 6s; }
+
+  @keyframes format-glow {
+    0%, 15%, 100% {
+      box-shadow: none;
+    }
+    7% {
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.5), 0 0 40px rgba(59, 130, 246, 0.2);
+    }
+  }
+</style>
