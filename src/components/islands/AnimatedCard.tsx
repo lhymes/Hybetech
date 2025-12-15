@@ -1,7 +1,8 @@
 /**
  * Animated Card Component
  *
- * Interactive card with hover animations and optional stagger effect.
+ * Interactive card with CSS hover effects and Motion entrance animation.
+ * Uses CSS for hover to avoid sluggish JS-based hover detection.
  */
 
 import { motion } from 'motion/react';
@@ -30,18 +31,14 @@ export default function AnimatedCard({
         delay: index * 0.1,
         ease: [0.25, 0.1, 0.25, 1],
       }}
-      whileHover={{
-        y: -8,
-        transition: { duration: 0.2 },
-      }}
-      className={`card card-hover ${className}`}
+      className={`card group cursor-pointer transition-all duration-150 ease-out hover:scale-[1.02] hover:shadow-lg hover:shadow-accent-500/10 hover:border-accent-500/30 ${className}`}
     >
       {children}
     </motion.div>
   );
 
   if (href) {
-    return <a href={href}>{cardContent}</a>;
+    return <a href={href} className="block">{cardContent}</a>;
   }
 
   return cardContent;
