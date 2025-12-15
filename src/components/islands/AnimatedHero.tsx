@@ -75,32 +75,38 @@ export default function AnimatedHero({
       >
         {title}
         {highlightedText && (
-          <motion.span
-            className="text-gradient inline-block"
-            animate={
-              enableShine
-                ? {
+          <span className="text-gradient">
+            {' '}
+            {enableShine ? (
+              highlightedText.split('').map((char, index) => (
+                <motion.span
+                  key={index}
+                  className="inline-block"
+                  style={{
+                    whiteSpace: char === ' ' ? 'pre' : 'normal',
+                  }}
+                  animate={{
                     filter: [
-                      'drop-shadow(0 0 8px rgba(59, 130, 246, 0.3)) drop-shadow(0 0 20px rgba(139, 92, 246, 0.15))',
-                      'drop-shadow(0 0 25px rgba(59, 130, 246, 0.6)) drop-shadow(0 0 50px rgba(139, 92, 246, 0.4))',
-                      'drop-shadow(0 0 8px rgba(59, 130, 246, 0.3)) drop-shadow(0 0 20px rgba(139, 92, 246, 0.15))',
+                      'drop-shadow(0 0 0px rgba(59, 130, 246, 0))',
+                      'drop-shadow(0 0 20px rgba(59, 130, 246, 0.8)) drop-shadow(0 0 40px rgba(139, 92, 246, 0.5))',
+                      'drop-shadow(0 0 0px rgba(59, 130, 246, 0))',
                     ],
-                  }
-                : undefined
-            }
-            transition={{
-              duration: 3,
-              ease: 'easeInOut',
-              repeat: Infinity,
-              repeatDelay: 4,
-              delay: 2,
-            }}
-            style={{
-              filter: 'drop-shadow(0 0 8px rgba(59, 130, 246, 0.3)) drop-shadow(0 0 20px rgba(139, 92, 246, 0.15))',
-            }}
-          >
-            {' '}{highlightedText}
-          </motion.span>
+                  }}
+                  transition={{
+                    duration: 0.6,
+                    ease: 'easeOut',
+                    repeat: Infinity,
+                    repeatDelay: 6,
+                    delay: 2 + index * 0.03,
+                  }}
+                >
+                  {char}
+                </motion.span>
+              ))
+            ) : (
+              highlightedText
+            )}
+          </span>
         )}
       </motion.h1>
 
