@@ -97,4 +97,9 @@ export default defineConfig({
     port: 4321,
     host: true,
   },
+
+  // Disable dev toolbar (it won't appear in production anyway)
+  devToolbar: {
+    enabled: false,
+  },
 });
