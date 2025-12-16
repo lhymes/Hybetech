@@ -10,7 +10,8 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
 
   # Content Security Policy
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://formspree.io https://cloudflareinsights.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://formspree.io
+  # NOTE: Update connect-src with your actual API Gateway URL (e.g., https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com)
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://cloudflareinsights.com https://challenges.cloudflare.com https://*.execute-api.us-east-1.amazonaws.com https://*.execute-api.us-east-2.amazonaws.com; frame-src https://challenges.cloudflare.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
 
 # Cache static assets aggressively
 /fonts/*

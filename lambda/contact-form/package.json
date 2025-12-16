@@ -1,0 +1,27 @@
+{
+  "name": "hybetech-contact-form",
+  "version": "1.0.0",
+  "description": "AWS Lambda contact form with Microsoft Graph email delivery",
+  "type": "commonjs",
+  "main": "dist/handler.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@azure/msal-node": "^2.16.2",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.147",
+    "@types/node": "^22.10.2",
+    "archiver": "^7.0.1",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
